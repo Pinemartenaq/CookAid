@@ -30,7 +30,8 @@
             android:name="wtmpd.cookaid.NavigationBar"
             android:id="@+id/fragment3"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center" />
     </LinearLayout>
 
     <LinearLayout

@@ -41,7 +41,8 @@
             android:name="wtmpd.cookaid.NavigationBar"
             android:id="@+id/fragment5"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center" />
     </LinearLayout>
 
     <EditText
@@ -52,8 +53,7 @@
         android:hint="Type in your search here"
         android:clickable="true"
         android:editable="true"
-        android:layout_below="@+id/linearLayout9"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="128dp" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
