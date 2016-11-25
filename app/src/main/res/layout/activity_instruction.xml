@@ -3,7 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="wtmpd.cookaid.InstructionActivity">
+    tools:context="wtmpd.cookaid.InstructionActivity"
+    android:background="@android:color/holo_orange_light">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@android:color/holo_blue_light"
+        android:id="@+id/linearLayout17" />
 
     <LinearLayout
         android:orientation="vertical"
