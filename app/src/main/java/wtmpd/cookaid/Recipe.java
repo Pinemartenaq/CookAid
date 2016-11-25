@@ -17,8 +17,17 @@ public class Recipe {
     private RecipeCuisine cuisine;
     private RecipeType type;
     private List<SpecificIngredient> ingredients;
+    private SingletonStorage storage;
 
-    //ToDo: Implement storage
+    //Constructor
+    public Recipe(String name, int prepTime, RecipeCuisine cuisine, RecipeType type, List<SpecificIngredient> ingredients){
+        this.name = name;
+        this.prepTime = prepTime;
+        this.cuisine = cuisine;
+        this.type = type;
+        this.ingredients = ingredients;
+        storage = SingletonStorage.getInstance();
+    }
 
     //Getters
     public String getName() { return name; }
@@ -42,8 +51,8 @@ public class Recipe {
      * @param newIngredients
      */
     public void addIngredients(List<SpecificIngredient> newIngredients) {
-        for (SpecificIngredient i : newIngredients);
-            //...
+        for (SpecificIngredient i : newIngredients)
+            ingredients.add(i);
     }
 
     //Instance Methods
