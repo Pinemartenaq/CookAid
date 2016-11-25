@@ -1,7 +1,7 @@
 package wtmpd.cookaid;
 
 /**
- * Created by William Gardiner on 2016-11-25.
+ * @Author: WTMPD Group
  */
 
 public class SpecificIngredient {
@@ -11,16 +11,16 @@ public class SpecificIngredient {
     String measurement;
 
     //Constructors
-    //ToDo: Add Constructors
+    public SpecificIngredient(Ingredient ingredient, String measurement) {
+        this.ingredient = ingredient;
+        this.measurement = measurement;
+    }
 
     //Getters
-    //ToDo: Add Getters
+    public Ingredient getIngredient() { return ingredient; }
+    public String getMeasurement() { return measurement; }
 
     //Setters
-    //ToDo: Add Setters
+    public void setMeasurement (String newMeasurement) { measurement = newMeasurement; }
 
-    //Public Instance Methods
-    //ToDo: Add Instance methods
-
-    //Private Instance Methods
 }

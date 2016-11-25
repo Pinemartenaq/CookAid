@@ -1,28 +1,22 @@
 package wtmpd.cookaid;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @Author: WTMPD Group
  */
 
-public class RecipeCuisine {
-
-    //Attributes
-    //ToDo: Add attributes
-
-    //Association
-    //ToDo: Add Associations
-
+public class RecipeCuisine extends RecipeDescriptor{
     //Constructors
-    //ToDo: Add Constructors
+    public RecipeCuisine(String name) { this.name = name; }
 
-    //Getters
-    //ToDo: Add Getters
-
-    //Setters
-    //ToDo: Add Setters
-
-    //Public Instance Methods
-    //ToDo: Add Instance methods
-
-    //Private Instance Methods
+    //Filter
+    public List<Recipe> filterRecipes(List<Recipe> inputRecipeList) {
+        List<Recipe> outputRecipeList = new LinkedList<>();
+        for (Recipe r : inputRecipeList)
+            if (r.getCuisine() == this)
+                outputRecipeList.add(r);
+        return outputRecipeList;
+    }
 }
