@@ -25,5 +25,5 @@ public class SingletonStorage {
     //ToDo: Add Instance methods
 
     //Private Instance Methods
-    
+
 }
