@@ -17,6 +17,7 @@ public class Recipe {
     private RecipeCuisine cuisine;
     private RecipeType type;
     private List<Ingredient> ingredients;
+    private List<String> measurments;
 
     //ToDo: Implement storage
 
@@ -40,10 +41,8 @@ public class Recipe {
      *
      * @param newIngredients
      */
-    public void addIngredients(List<Ingredient> newIngredients) {
-        for (Ingredient i : newIngredients)
-            ingredients.add(i);
-        removeDuplicateIngredients();
+    public void addIngredients(List<Ingredient> newIngredients, List<String> newMeasurments) {
+        //Todo: Implement
     }
 
     /**
