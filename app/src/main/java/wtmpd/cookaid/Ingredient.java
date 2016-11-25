@@ -1,7 +1,9 @@
 package wtmpd.cookaid;
 
+import java.util.List;
+
 /**
- * Created by William Gardiner on 2016-11-25.
+ * @Author: WTMPD Group
  */
 
 public class Ingredient {
@@ -9,20 +11,17 @@ public class Ingredient {
     //Attributes
     String name;
 
-    //Association
-    //ToDo: Add Associations
+    //Associations
+    List<Recipe> recipes;
 
     //Constructors
-    //ToDo: Add Constructors
+    public Ingredient(String name) { this.name = name; }
 
     //Getters
-    //ToDo: Add Getters
+    public List<Recipe> getRecipes() { return recipes; }
+    public boolean hasRecipes() { return recipes.size() != 0; }
 
     //Setters
-    //ToDo: Add Setters
-
-    //Public Instance Methods
-    //ToDo: Add Instance methods
-
-    //Private Instance Methods
+    public void addRecipe(Recipe newRecipe) { recipes.add(newRecipe); }
+    public boolean removeRecipe(Recipe oldRecipe) { return recipes.remove(oldRecipe); }
 }

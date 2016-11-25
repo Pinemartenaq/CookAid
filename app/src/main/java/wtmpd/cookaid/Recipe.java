@@ -1,9 +1,14 @@
 package wtmpd.cookaid;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by William Gardiner on 2016-11-25.
+ * Recipe class
+ *
+ * Stores information about the recipe.
+ *
+ * @Author: WTMPD Group
  */
 
 public class Recipe {
@@ -35,7 +40,15 @@ public class Recipe {
     public String getInstructions() { return instructions; }
     public RecipeCuisine getCuisine() { return cuisine; }
     public RecipeType getType() { return type; }
-    public List<SpecificIngredient> getIngredients() { return ingredients; }
+    public List<SpecificIngredient> getSpecificIngredients() { return ingredients; }
+    public List<Ingredient> getIngredients() {
+        List ingredientList = new LinkedList<Ingredient>();
+        for (SpecificIngredient si : ingredients) {
+            if(!ingredientList.contains(si.getIngredient()))
+                ingredientList.add(si.getIngredient());
+        }
+        return ingredientList;
+    }
 
     //Setters
     public void setName(String newName) { name = newName; }
@@ -44,7 +57,6 @@ public class Recipe {
     public void setCuisine(RecipeCuisine newCuisine) { cuisine = newCuisine; }
     public void setType(RecipeType newType) { type = newType; }
 
-    //Public Instance Methods
     /**
      * Adds multiple ingredients to the list of ingredients.
      *
@@ -55,7 +67,7 @@ public class Recipe {
             ingredients.add(i);
     }
 
-    //Instance Methods
+    //Public Instance Methods
 
     /**
      * Calculates the fitness of Recipe with the desiredIngredients.
