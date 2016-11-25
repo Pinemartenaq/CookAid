@@ -27,7 +27,7 @@ public class Recipe {
     public String getInstructions() { return instructions; }
     public RecipeCuisine getCuisine() { return cuisine; }
     public RecipeType getType() { return type; }
-    public List<Ingredient> getIngredients() { return ingredients; }
+    public List<Ingredient> getIngredients() { return ingredients; } //ToDo: Modify to work with specificIngredient
 
     //Setters
     public void setName(String newName) { name = newName; }
@@ -36,6 +36,7 @@ public class Recipe {
     public void setCuisine(RecipeCuisine newCuisine) { cuisine = newCuisine; }
     public void setType(RecipeType newType) { type = newType; }
 
+    //Public Instance Methods
     /**
      * Adds multiple ingredients to the list of ingredients.
      *
