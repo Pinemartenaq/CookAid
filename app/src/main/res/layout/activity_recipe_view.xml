@@ -11,7 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@android:color/holo_blue_light"
-        android:id="@+id/linearLayout18" />
+        android:id="@+id/linearLayout18" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/recipeTitle"
+            android:layout_gravity="center"
+            android:textSize="30dp"
+            android:gravity="center_vertical|center_horizontal" />
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
