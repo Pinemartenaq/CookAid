@@ -9,7 +9,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".Test"></activity>
+        <activity android:name=".InstructionActivity" />
+        <activity android:name=".RecipeCreationActivity" />
+        <activity android:name=".RecipeSearchActivity" />
+        <activity android:name=".ResultsActivity" />
+        <activity android:name=".RecipeViewActivity" />
+        <activity android:name=".RecipeEditActivity"></activity>
     </application>
 
 </manifest>
