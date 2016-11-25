@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Instructions"
+            android:text="Cook Aid Instructions"
             android:id="@+id/instructionsTitle"
             android:layout_gravity="center"
             android:textSize="30dp"
@@ -27,8 +27,134 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout3" />
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout3"
+        android:layout_below="@+id/linearLayout17"
+        android:layout_above="@+id/linearLayout4"
+        android:weightSum="1">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView" >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:weightSum="1"
+                android:layout_weight="0.10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2"
+                    android:text="@string/introduction"
+                    android:textSize="21dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1.07" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Navigation"
+                    android:id="@+id/textView"
+                    android:textSize="30dp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_marginLeft="10dp" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imageView"
+                        android:src="@mipmap/home" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView3"
+                        android:textSize="21dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1.07"
+                        android:text="@string/homeNav" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" >
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imageView2"
+                        android:src="@mipmap/search" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView4"
+                        android:textSize="21dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1.07"
+                        android:text="@string/searchNav" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" >
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imageView3"
+                        android:src="@mipmap/add" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView5"
+                        android:textSize="21dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1.07"
+                        android:text="@string/addNav" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" >
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imageView4"
+                        android:src="@mipmap/instruction" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView6"
+                        android:textSize="21dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1.07"
+                        android:text="@string/instructionsNav" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -48,5 +174,6 @@
             android:id="@+id/fragment2"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
+
     </LinearLayout>
 </RelativeLayout>
