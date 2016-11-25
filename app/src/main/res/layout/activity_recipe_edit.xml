@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="wtmpd.cookaid.RecipeEditActivity"
+    tools:context="wtmpd.cookaid.RecipeCreationActivity"
     android:background="@android:color/holo_orange_light">
 
     <LinearLayout
@@ -11,13 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@android:color/holo_blue_light"
-        android:id="@+id/linearLayout15" />
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout7" />
+        android:id="@+id/linearLayout16" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -27,15 +21,45 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout8" >
+        android:id="@+id/linearLayout6" >
 
         <fragment
             tools:layout="@layout/fragment_navigation_bar"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:name="wtmpd.cookaid.NavigationBar"
-            android:id="@+id/fragment4"
+            android:id="@+id/fragment3"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout5"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="addIngrediant"
+            android:ems="10"
+            android:id="@+id/editText"
+            tools:text="ingrediant #1"
+            android:contentDescription="Text field to add an ingrdiant."
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp" />
+
+        <Button
+            android:text="New Ingrediant Field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="50dp" />
     </LinearLayout>
 </RelativeLayout>
