@@ -16,8 +16,7 @@ public class Recipe {
     //Associations
     private RecipeCuisine cuisine;
     private RecipeType type;
-    private List<Ingredient> ingredients;
-    private List<String> measurments;
+    private List<SpecificIngredient> ingredients;
 
     //ToDo: Implement storage
 
@@ -27,7 +26,7 @@ public class Recipe {
     public String getInstructions() { return instructions; }
     public RecipeCuisine getCuisine() { return cuisine; }
     public RecipeType getType() { return type; }
-    public List<Ingredient> getIngredients() { return ingredients; } //ToDo: Modify to work with specificIngredient
+    public List<SpecificIngredient> getIngredients() { return ingredients; }
 
     //Setters
     public void setName(String newName) { name = newName; }
@@ -42,14 +41,10 @@ public class Recipe {
      *
      * @param newIngredients
      */
-    public void addIngredients(List<Ingredient> newIngredients, List<String> newMeasurments) {
-        //Todo: Implement
+    public void addIngredients(List<SpecificIngredient> newIngredients) {
+        for (SpecificIngredient i : newIngredients);
+            //...
     }
-
-    /**
-     * Removes any duplicate ingredients.
-     */
-    public void removeDuplicateIngredients() {;} //ToDo: Implement
 
     //Instance Methods
 
