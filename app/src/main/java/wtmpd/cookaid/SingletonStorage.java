@@ -52,6 +52,7 @@ public class SingletonStorage {
 
     public void addRecipe(Recipe newRecipe) { recipes.add(newRecipe); }
     public void addType(RecipeType newType){ types.add(newType); }
+    public void addIngredient(Ingredient newIngredient){ ingredients.add(newIngredient); }
     //ToDo: Add Instance methods
 
     //Private Instance Methods

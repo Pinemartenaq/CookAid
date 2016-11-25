@@ -19,7 +19,6 @@
         <activity android:name=".RecipeSearchActivity" />
         <activity android:name=".ResultsActivity" />
         <activity android:name=".RecipeViewActivity" />
-        <activity android:name=".RecipeEditActivity"></activity>
     </application>
 
 </manifest>
