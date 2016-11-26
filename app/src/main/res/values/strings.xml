@@ -18,4 +18,23 @@
     <string name="instructionsNav">
         Press the Instructions button on the navigation bar to visit this page at any time for help
     </string>
+
+    <string-array name = "cuisines">
+        <item> Caribbean</item>
+        <item> Chinese</item>
+        <item> French</item>
+        <item> Greek </item>
+        <item> Indian </item>
+        <item> Italian </item>
+    </string-array>
+
+    <string-array name = "type">
+        <item> Main</item>
+        <item> Appetizer</item>
+        <item> Dessert</item>
+        <item> Snack </item>
+        <item> Drink </item>
+    </string-array>
+
+
 </resources>
