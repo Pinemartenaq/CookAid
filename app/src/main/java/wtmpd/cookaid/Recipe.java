@@ -16,7 +16,7 @@ public class Recipe {
     //Attributes
     private String name;
     private int prepTime;
-    private String instructions;
+    private String cookingDirections;
 
     //Associations
     private RecipeCuisine cuisine;
@@ -25,35 +25,45 @@ public class Recipe {
     private SingletonStorage storage;
 
     //Constructor
-    public Recipe(String name, int prepTime, RecipeCuisine cuisine, RecipeType type, List<SpecificIngredient> ingredients){
+    public Recipe(String name, int prepTime, RecipeCuisine cuisine, RecipeType type, List<SpecificIngredient> ingredients, String cookingDirections){
+
         this.name = name;
         this.prepTime = prepTime;
+
         this.cuisine = cuisine;
+        cuisine.addRecipe(this);
+
         this.type = type;
+        type.addRecipe(this);
+
         this.ingredients = ingredients;
+        for(SpecificIngredient si : ingredients)
+            si.getIngredient().addRecipe(this);
+
+        this.cookingDirections = cookingDirections;
+
         storage = SingletonStorage.getInstance();
     }
 
     //Getters
     public String getName() { return name; }
     public int getPrepTime(){ return prepTime; }
-    public String getInstructions() { return instructions; }
+    public String getInstructions() { return cookingDirections; }
     public RecipeCuisine getCuisine() { return cuisine; }
     public RecipeType getType() { return type; }
     public List<SpecificIngredient> getSpecificIngredients() { return ingredients; }
     public List<Ingredient> getIngredients() {
         List ingredientList = new LinkedList<Ingredient>();
-        for (SpecificIngredient si : ingredients) {
+        for (SpecificIngredient si : ingredients)
             if(!ingredientList.contains(si.getIngredient()))
                 ingredientList.add(si.getIngredient());
-        }
         return ingredientList;
     }
 
     //Setters
     public void setName(String newName) { name = newName; }
     public void setPrepTime(int newPrepTime) { prepTime = newPrepTime; }
-    public void setInstructions(String newInstructions) { instructions = newInstructions; }
+    public void setInstructions(String newInstructions) { cookingDirections = newInstructions; }
     public void setCuisine(RecipeCuisine newCuisine) { cuisine = newCuisine; }
     public void setType(RecipeType newType) { type = newType; }
 
