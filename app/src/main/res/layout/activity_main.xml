@@ -71,7 +71,8 @@
             android:id="@+id/fragment"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            tools:layout="@layout/fragment_navigation_bar" />
+            tools:layout="@layout/fragment_navigation_bar"
+            android:layout_gravity="center" />
 
     </LinearLayout>
 
