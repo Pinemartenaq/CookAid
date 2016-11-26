@@ -1,12 +1,14 @@
 package wtmpd.cookaid;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecipeSearchActivity extends AppCompatActivity {
+public class RecipeSearchActivity extends AppCompatActivity implements NavigationBar.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,5 +26,28 @@ public class RecipeSearchActivity extends AppCompatActivity {
                 //fragments.add(new RecipeItemFragment(recipe, recipe.getFitness(included))); //ToDo: Fix
             }
         return fragments;
+    }
+
+    @Override
+    public void onHomeClick() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
+    @Override
+    public void onSearchClick() {
+
+    }
+
+    @Override
+    public void onAddClick() {
+        Intent intent = new Intent(getApplicationContext(), RecipeCreationActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
+    @Override
+    public void onInstructionClick() {
+        Intent intent = new Intent(getApplicationContext(), InstructionActivity.class);
+        startActivityForResult(intent, 0);
     }
 }
