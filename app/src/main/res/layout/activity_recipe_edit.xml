@@ -11,7 +11,18 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@android:color/holo_blue_light"
-        android:id="@+id/linearLayout16" />
+        android:id="@+id/linearLayout16" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Edit Recipe"
+            android:id="@+id/editTitle"
+            android:layout_gravity="center"
+            android:textSize="30dp"
+            android:gravity="center_vertical|center_horizontal" />
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -34,33 +45,4 @@
             android:layout_gravity="center" />
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout5"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="addIngrediant"
-            android:ems="10"
-            android:id="@+id/editText"
-            tools:text="ingrediant #1"
-            android:contentDescription="Text field to add an ingrdiant."
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp" />
-
-        <Button
-            android:text="New Ingrediant Field"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="50dp" />
-    </LinearLayout>
 </RelativeLayout>
