@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 
 /**
@@ -17,17 +19,14 @@ import android.view.ViewGroup;
  * Use the {@link NavigationBar#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NavigationBar extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class NavigationBar extends Fragment implements View.OnClickListener{
 
     private OnFragmentInteractionListener mListener;
+
+    ImageButton homeBttn;
+    ImageButton searchBttn;
+    ImageButton addBttn;
+    ImageButton instructionBttn;
 
     public NavigationBar() {
         // Required empty public constructor
@@ -37,16 +36,12 @@ public class NavigationBar extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment NavigationBar.
      */
     // TODO: Rename and change types and number of parameters
-    public static NavigationBar newInstance(String param1, String param2) {
+    public static NavigationBar newInstance() {
         NavigationBar fragment = new NavigationBar();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -54,25 +49,55 @@ public class NavigationBar extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_navigation_bar, container, false);
+        View view = inflater.inflate(R.layout.fragment_navigation_bar, container, false);
+
+        homeBttn = (ImageButton)view.findViewById(R.id.homeButton);
+        searchBttn = (ImageButton)view.findViewById(R.id.searchButton);
+        addBttn = (ImageButton)view.findViewById(R.id.addButton);
+        instructionBttn = (ImageButton)view.findViewById(R.id.instructionButton);
+
+        homeBttn.setOnClickListener(this);
+        searchBttn.setOnClickListener(this);
+        addBttn.setOnClickListener(this);
+        instructionBttn.setOnClickListener(this);
+
+        return view;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void onNavButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
         }
     }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.homeButton:
+                mListener.onHomeClick();
+                break;
+            case R.id.searchButton:
+                mListener.onSearchClick();
+                break;
+            case R.id.addButton:
+                mListener.onAddClick();
+                break;
+            case R.id.instructionButton:
+                mListener.onInstructionClick();
+                break;
+            default:
+                break;
+        }
+    }
+
 
     @Override
     public void onAttach(Context context) {
@@ -102,7 +127,9 @@ public class NavigationBar extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onHomeClick();
+        void onSearchClick();
+        void onAddClick();
+        void onInstructionClick();
     }
 }
