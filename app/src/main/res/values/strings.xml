@@ -13,7 +13,7 @@
         Press the Search button on the navigation bar to query your existing recipes
     </string>
     <string name="addNav">
-        Press the Add button on the navigation bar to add a new recipe
+        Press the Add button on the navigation bar to access the recipe editor
     </string>
     <string name="instructionsNav">
         Press the Instructions button on the navigation bar to visit this page at any time for help
