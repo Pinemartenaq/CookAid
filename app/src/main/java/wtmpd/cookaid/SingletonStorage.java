@@ -1,65 +1,75 @@
 package wtmpd.cookaid;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
 import java.util.List;
 
 /**
  * @Author: WTMPD Group
  */
 
-public class SingletonStorage {
+public class SingletonStorage extends SQLiteOpenHelper{
 
+    //Singleton
     private static SingletonStorage storage = null;
 
-    //Attributes
-    private String fileName = "default_file_name.txt";
+    //Constants
+    private final static String DATABASE_NAME = "CookAid.db";
+    private final static String[] TABLES_NAME = {"Recipes"};
+    private final static String[] COLUMN_HEADERS = {"Name", "Type", "Cuisine", "Ingredients", "Preptime", "Instructions"};
 
     //Association
     private List<Recipe> recipes;
-    private List<RecipeCuisine> cuisines;
-    private List<RecipeType> types;
+    //private List<RecipeCuisine> cuisines;
+    //private List<RecipeType> types;
     private List<Ingredient> ingredients;
 
     //Constructors
-    public static SingletonStorage getInstance(){
-        storage =  storage == null ? new SingletonStorage() : storage;
+    private SingletonStorage(Context context) {
+        super(context, DATABASE_NAME, null, 1);
+    }
+
+    public static SingletonStorage getInstance(Context context){
+        storage =  storage == null ? new SingletonStorage(context) : storage;
         return storage;
     }
 
-    //Empty constructor
-    public SingletonStorage(){}
-
     //Getters
-    public String getFileName() { return fileName; }
     public List<Recipe> getRecipes() { return recipes; }
-    public List<RecipeCuisine> getCuisines() { return cuisines; }
-    public List<RecipeType> getTypes() { return types; }
+   // public List<RecipeCuisine> getCuisines() { return cuisines; }
+    //public List<RecipeType> getTypes() { return types; }
     public List<Ingredient> getIngredients() { return ingredients; }
-
-    //Setters
-    public void setFileName(String newName) { fileName = newName; }
 
     //Adders
     public void addRecipe(Recipe newRecipe) { recipes.add(newRecipe); }
-    public void addCuisine(RecipeCuisine newCuisine) { cuisines.add(newCuisine); }
-    public void addType(RecipeType newType) { types.add(newType); }
+    //public void addCuisine(RecipeCuisine newCuisine) { cuisines.add(newCuisine); }
+    //public void addType(RecipeType newType) { types.add(newType); }
     public void addIngredient(Ingredient newIngredient) { ingredients.add(newIngredient); }
 
     //Removers
     public boolean removeRecipe(Recipe recipe) { return recipes.remove(recipe); }
 
-    //Private Removers
-    private boolean removeCuisine(RecipeCuisine cuisine){ return cuisines.remove(cuisine); }
-    private boolean removeType(RecipeType type){ return types.remove(type); }
-    private boolean removeIngredient(Ingredient ingredient) { return ingredients.remove(ingredient); }
+    @Override
+    public void onCreate(SQLiteDatabase db) {
 
-    //Public Instance Methods
-    public boolean loadIntoStorage(){
-        //ToDo: Read from file to instance variables
-        return true; //Temp value
+        StringBuilder queryBuilder = new StringBuilder();
+
+        //Build Query
+        queryBuilder.append("create table ");
+        queryBuilder.append(TABLES_NAME).append("(");
+        queryBuilder.append(COLUMN_HEADERS[0]).append(" TEXT PRIMARY KEY");
+        for (int i = 1; i < COLUMN_HEADERS.length; i++)
+            queryBuilder.append(", ").append(COLUMN_HEADERS[i]).append(" TEXT");
+        queryBuilder.append(")");
+
+        db.execSQL(queryBuilder.toString());
     }
 
-    public void saveToFile() {
-        //Clean up unused ingredients/types/cuisines
-        //ToDo Write to file from instance variables
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS" + TABLES_NAME);
+        onCreate(db);
     }
 }
