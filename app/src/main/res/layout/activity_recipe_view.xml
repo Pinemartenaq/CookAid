@@ -6,6 +6,7 @@
     tools:context="wtmpd.cookaid.RecipeViewActivity"
     android:background="@android:color/holo_orange_light">
 
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -49,4 +50,32 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center" />
     </LinearLayout>
+
+    <Button
+        android:text="Delete"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/doneButton"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginBottom="72dp"
+        android:background="#34b5e5"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:layout_above="@+id/linearLayout12"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Edit"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editButton"
+        android:layout_marginLeft="47dp"
+        android:layout_marginStart="47dp"
+        android:background="#34b5e5"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:layout_alignBaseline="@+id/doneButton"
+        android:layout_alignBottom="@+id/doneButton"
+        android:layout_toRightOf="@+id/doneButton"
+        android:layout_toEndOf="@+id/doneButton" />
 </RelativeLayout>

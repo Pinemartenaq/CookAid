@@ -51,7 +51,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/titleBar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -80,13 +81,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/cuisineList"
-                android:layout_above="@+id/goButton"
+                android:layout_above="@+id/searchButton"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_marginBottom="18dp"
                 android:entries="@array/cuisines"
                 android:layout_weight="1"
-                android:layout_margin="10dp" />
+                android:layout_margin="10dp"
+                style="@android:style/Widget.Spinner.DropDown" />
 
             <Spinner
                 android:layout_width="wrap_content"
@@ -94,7 +96,9 @@
                 android:id="@+id/typeList"
                 android:layout_weight="1"
                 android:entries="@array/type"
-                android:layout_margin="10dp" />
+                android:layout_margin="10dp"
+                style="@android:style/Widget.Spinner.DropDown"
+                android:theme="@style/CookAid" />
 
         </LinearLayout>
 
@@ -102,7 +106,7 @@
             android:text="Search"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:id="@+id/goButton"
+            android:id="@+id/searchButton"
             android:background="#34b5e5"
             android:layout_gravity="center_horizontal"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
