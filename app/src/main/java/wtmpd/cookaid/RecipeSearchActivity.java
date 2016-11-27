@@ -35,8 +35,8 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         List<Ingredient> exclude = new LinkedList<>();
 
         String[] splitString = ingredients.getText().toString().toLowerCase().split("not");
-        String includeString = splitString[0].trim();
-        String excludeString = splitString[1].trim();
+        String includeString = splitString.length > 0 ? splitString[0].trim() : new String();
+        String excludeString = splitString.length > 1 ? splitString[1].trim() : new String();
 
         String[] includeStringArray = includeString.split(",");
         for(String s : includeStringArray)
