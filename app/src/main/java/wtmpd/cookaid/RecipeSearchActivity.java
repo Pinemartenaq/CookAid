@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,6 +17,7 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
 
     EditText ingredients;
     Spinner type, cuisine;
+    Button search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,9 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         ingredients = (EditText)findViewById(R.id.SearchBar);
         type = (Spinner)findViewById(R.id.typeList);
         cuisine = (Spinner)findViewById(R.id.cuisineList);
+        search = (Button)findViewById(R.id.searchButton);
+
+        //ToDo: Define on click listener
     }
 
     public void searchForRecipe(View view){
