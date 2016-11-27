@@ -40,7 +40,7 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
 
     @Override
     public void onAddClick() {
-        Intent intent = new Intent(getApplicationContext(), RecipeCreationActivity.class);
+        Intent intent = new Intent(getApplicationContext(), RecipeEditActivity.class);
         startActivityForResult(intent, 0);
     }
 

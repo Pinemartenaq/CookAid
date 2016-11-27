@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import java.util.List;
 
-public class RecipeCreationActivity extends AppCompatActivity implements NavigationBar.OnFragmentInteractionListener{
+public class RecipeEditActivity extends AppCompatActivity implements NavigationBar.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class RecipeCreationActivity extends AppCompatActivity implements Navigat
 
     //Private Methods
     private void addRecipe( String name, int prepTime, RecipeCuisine cuisine, RecipeType type, List<SpecificIngredient> ingredients, String cookingDirections) {
-        SingletonStorage storage = SingletonStorage.getInstance();
+        SingletonStorage storage = SingletonStorage.getInstance(this);
         Recipe newRecipe = new Recipe(name, prepTime, cuisine, type, ingredients, cookingDirections);
         storage.addRecipe(newRecipe);
     }

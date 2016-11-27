@@ -26,7 +26,7 @@ public class InstructionActivity extends AppCompatActivity implements Navigation
 
     @Override
     public void onAddClick() {
-        Intent intent = new Intent(getApplicationContext(), RecipeCreationActivity.class);
+        Intent intent = new Intent(getApplicationContext(), RecipeEditActivity.class);
         startActivityForResult(intent, 0);
     }
 

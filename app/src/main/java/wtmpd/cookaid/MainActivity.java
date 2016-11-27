@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationBar.OnFragmentInteractionListener{
 
-    SingletonStorage storage = SingletonStorage.getInstance(this);
+    SingletonStorage storage;
 
     //Getter
     public SingletonStorage getStorage(){
@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBar.OnF
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        storage = SingletonStorage.getInstance(this);
     }
 
     @Override
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBar.OnF
 
     @Override
     public void onAddClick() {
-        Intent intent = new Intent(getApplicationContext(), RecipeCreationActivity.class);
+        Intent intent = new Intent(getApplicationContext(), RecipeEditActivity.class);
         startActivityForResult(intent, 0);
     }
 
