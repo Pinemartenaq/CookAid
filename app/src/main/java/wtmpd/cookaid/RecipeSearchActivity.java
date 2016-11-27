@@ -2,7 +2,6 @@ package wtmpd.cookaid;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -18,12 +17,12 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
 
     private ArrayList<RecipeItemFragment> getListOfRecipeFragmets(RecipeType type, RecipeCuisine cuisine, List<Ingredient> included, List<Ingredient> excluded) {
 
-        SingletonStorage storage = SingletonStorage.getInstance();
+        SingletonStorage storage = SingletonStorage.getInstance(this);
         ArrayList<RecipeItemFragment> fragments = new ArrayList<>();
 
         for (Recipe recipe : storage.getRecipes())
             if (recipe.getFitness(excluded) == 0 && recipe.getCuisine() == cuisine && recipe.getType() == type) {
-                //fragments.add(new RecipeItemFragment(recipe, recipe.getFitness(included))); //ToDo: Fix
+                fragments.add(recipe.getFragment(included));
             }
         return fragments;
     }

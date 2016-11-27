@@ -34,6 +34,9 @@ public class RecipeItemFragment extends Fragment {
         return fragment;
     }
 
+    public void addRecipe(Recipe recipe){ this.recipe = recipe; }
+    public void addFitness(int fitness){ this.fitness = fitness; }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

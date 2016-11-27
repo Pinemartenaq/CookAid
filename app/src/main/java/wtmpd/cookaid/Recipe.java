@@ -61,6 +61,12 @@ public class Recipe {
                 ingredientList.add(si.getIngredient());
         return ingredientList;
     }
+    public RecipeItemFragment getFragment(List<Ingredient> ingredientList){
+        RecipeItemFragment fragment = new RecipeItemFragment();
+        fragment.addRecipe(this);
+        fragment.addFitness(getFitness(ingredientList));
+        return fragment;
+    }
 
     //Setters
     public void setName(String newName) { name = newName; }
