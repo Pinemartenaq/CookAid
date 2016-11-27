@@ -22,6 +22,7 @@
             android:layout_gravity="center"
             android:textSize="30dp"
             android:gravity="center_vertical|center_horizontal" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -43,6 +44,44 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:text="+"
+            android:layout_height="wrap_content"
+            android:id="@+id/editButton"
+            android:background="#34b5e5"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="112dp"
+            android:layout_marginEnd="112dp"
+            android:layout_weight="1"
+            android:layout_margin="20dp" />
+
+        <Button
+            android:text="Done"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/doneButton"
+            android:layout_marginBottom="22dp"
+            android:background="#34b5e5"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:layout_above="@+id/linearLayout6"
+            android:layout_toLeftOf="@+id/editButton"
+            android:layout_toStartOf="@+id/editButton"
+            android:layout_weight="1"
+            android:layout_margin="20dp" />
     </LinearLayout>
 
 </RelativeLayout>
