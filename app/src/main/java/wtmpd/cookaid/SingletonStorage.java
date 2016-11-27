@@ -146,6 +146,10 @@ public class SingletonStorage extends SQLiteOpenHelper{
         return db.delete(TABLE_NAME, "ID = ?", value) != 0;
     }
 
+    /**
+     *
+     * @return
+     */
     private boolean createObjectsFromDatabase(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
@@ -186,7 +190,7 @@ public class SingletonStorage extends SQLiteOpenHelper{
      * @param ingredientName
      * @return ingredient with correct name
      */
-    private Ingredient getIngredient(String ingredientName){
+    public Ingredient getIngredient(String ingredientName){
 
         Ingredient ingredient = null;
 
@@ -201,7 +205,7 @@ public class SingletonStorage extends SQLiteOpenHelper{
         return ingredient;
     }
 
-    private RecipeType getType(String typeName){
+    public RecipeType getType(String typeName){
 
         RecipeType type = null;
 
@@ -217,7 +221,7 @@ public class SingletonStorage extends SQLiteOpenHelper{
 
     }
 
-    private RecipeCuisine getCuisine(String cuisineName){
+    public RecipeCuisine getCuisine(String cuisineName){
 
         RecipeCuisine cuisine = null;
 

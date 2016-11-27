@@ -114,7 +114,8 @@
             android:layout_above="@+id/bottomLayout"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="104dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:onClick='"searchForRecipe"' />
 
     </LinearLayout>
 
