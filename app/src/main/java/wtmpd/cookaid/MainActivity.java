@@ -6,6 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationBar.OnFragmentInteractionListener{
 
+    SingletonStorage storage = SingletonStorage.getInstance(this);
+
+    //Getter
+    public SingletonStorage getStorage(){
+        return storage;
+    }
+
+    //Button functions
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

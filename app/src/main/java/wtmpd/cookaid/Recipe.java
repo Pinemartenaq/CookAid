@@ -14,6 +14,7 @@ import java.util.List;
 public class Recipe {
 
     //Attributes
+    private int databaseID;
     private String name;
     private int prepTime;
     private String cookingDirections;
@@ -26,6 +27,8 @@ public class Recipe {
 
     //Constructor
     public Recipe(String name, int prepTime, RecipeCuisine cuisine, RecipeType type, List<SpecificIngredient> ingredients, String cookingDirections){
+
+        databaseID = -1;
 
         this.name = name;
         this.prepTime = prepTime;
@@ -41,11 +44,10 @@ public class Recipe {
             si.getIngredient().addRecipe(this);
 
         this.cookingDirections = cookingDirections;
-
-        storage = SingletonStorage.getInstance();
     }
 
     //Getters
+    public String getID() { return Integer.toString(databaseID); }
     public String getName() { return name; }
     public int getPrepTime(){ return prepTime; }
     public String getInstructions() { return cookingDirections; }
@@ -66,6 +68,7 @@ public class Recipe {
     public void setInstructions(String newInstructions) { cookingDirections = newInstructions; }
     public void setCuisine(RecipeCuisine newCuisine) { cuisine = newCuisine; }
     public void setType(RecipeType newType) { type = newType; }
+    public void setID(int id){ databaseID = id; }
 
     /**
      * Adds multiple ingredients to the list of ingredients.
