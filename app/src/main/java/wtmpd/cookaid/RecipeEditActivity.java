@@ -15,6 +15,17 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
     }
 
     //Private Methods
+
+    /**
+     * Creates a new recipe object and database entry
+     *
+     * @param name
+     * @param prepTime
+     * @param cuisine
+     * @param type
+     * @param ingredients
+     * @param cookingDirections
+     */
     private void addRecipe( String name, int prepTime, RecipeCuisine cuisine, RecipeType type, List<SpecificIngredient> ingredients, String cookingDirections) {
         SingletonStorage storage = SingletonStorage.getInstance(this);
         Recipe newRecipe = new Recipe(name, prepTime, cuisine, type, ingredients, cookingDirections);

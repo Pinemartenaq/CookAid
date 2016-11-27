@@ -150,19 +150,21 @@ public class SingletonStorage extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
-        do{
-            Recipe newRecipe = new Recipe(
-                    cursor.getString(1), //name
-                    Integer.parseInt(cursor.getString(5)), //time
-                    getCuisine(cursor.getString(3)), //cuisine
-                    getType(cursor.getString(2)), //type
-                    getSpecificIngredientsFromString(cursor.getString(4)), //ingredients
-                    cursor.getString(6) //instructions
-            );
-            newRecipe.setID(cursor.getInt(0)); //ID
-            recipes.add(newRecipe);
-        }while(!cursor.isLast());
+        if(cursor.getCount() > 0)
+            do {
+                Recipe newRecipe = new Recipe(
+                        cursor.getString(1), //name
+                        Integer.parseInt(cursor.getString(5)), //time
+                        getCuisine(cursor.getString(3)), //cuisine
+                        getType(cursor.getString(2)), //type
+                        getSpecificIngredientsFromString(cursor.getString(4)), //ingredients
+                        cursor.getString(6) //instructions
+                );
+                newRecipe.setID(cursor.getInt(0)); //ID
+                recipes.add(newRecipe);
+            } while (!cursor.isLast());
         return true;
+
     }
 
     //Other Private Methods
