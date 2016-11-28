@@ -97,8 +97,7 @@
                 android:layout_weight="1"
                 android:entries="@array/type"
                 android:layout_margin="10dp"
-                style="@android:style/Widget.Spinner.DropDown"
-                android:theme="@style/CookAid" />
+                style="@android:style/Widget.Spinner.DropDown" />
 
         </LinearLayout>
 
