@@ -30,6 +30,8 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         cuisine = (Spinner)findViewById(R.id.cuisineList);
         search = (Button)findViewById(R.id.goButton);
 
+        search.setOnClickListener(btnListener);
+
         //ToDo: Define on click listener
     }
 
@@ -93,4 +95,20 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         Intent intent = new Intent(getApplicationContext(), InstructionActivity.class);
         startActivityForResult(intent, 0);
     }
+
+    private View.OnClickListener btnListener = new View.OnClickListener()
+    {
+
+        public void onClick(View v)
+        {
+            switch (v.getId()){
+                case R.id.goButton:
+                    searchForRecipe(v);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    };
 }

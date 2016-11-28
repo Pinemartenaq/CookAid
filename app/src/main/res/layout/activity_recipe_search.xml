@@ -108,8 +108,7 @@
             android:id="@+id/goButton"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:background="@android:color/holo_blue_light"
-            android:onClick="searchForRecipe (RecipeSearchActivity)" />
+            android:background="@android:color/holo_blue_light" />
 
     </LinearLayout>
 
