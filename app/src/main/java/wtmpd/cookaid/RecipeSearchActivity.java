@@ -3,7 +3,6 @@ package wtmpd.cookaid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,8 +51,6 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
             exclude.add(storage.getIngredient(s.trim()));
 
         List<RecipeItemFragment> fragments = getListOfRecipeFragmets(storage.getType(type.getSelectedItem().toString()), storage.getCuisine(cuisine.getSelectedItem().toString()), include, exclude);
-
-        Log.d("FLAG", "Search");
 
         //ToDo: Switch views and pass fragments
     }
