@@ -3,6 +3,7 @@ package wtmpd.cookaid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatImageButton;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +28,7 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         ingredients = (EditText)findViewById(R.id.SearchBar);
         type = (Spinner)findViewById(R.id.typeList);
         cuisine = (Spinner)findViewById(R.id.cuisineList);
-        search = (Button)findViewById(R.id.searchButton);
+        search = (Button)findViewById(R.id.goButton);
 
         //ToDo: Define on click listener
     }

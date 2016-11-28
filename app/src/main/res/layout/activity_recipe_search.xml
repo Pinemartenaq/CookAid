@@ -104,18 +104,13 @@
 
         <Button
             android:text="Search"
-            android:layout_width="120dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/searchButton"
-            android:background="#34b5e5"
-            android:layout_gravity="center_horizontal"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:layout_above="@+id/bottomLayout"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="104dp"
+            android:id="@+id/goButton"
             android:layout_weight="1"
-            android:onClick='"searchForRecipe"' />
+            android:layout_gravity="center"
+            android:background="@android:color/holo_blue_light"
+            android:onClick="searchForRecipe (RecipeSearchActivity)" />
 
     </LinearLayout>
 
