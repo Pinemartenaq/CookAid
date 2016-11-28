@@ -16,16 +16,15 @@
         android:layout_height="60dp">
 
         <TextView
-            android:text="Welcome to CookAid!"
+            android:text="Welcome to CookAid"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:id="@+id/mainTitle"
             android:layout_weight="7.84"
-            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_gravity="center"
-            android:textSize="30dp"
-            android:textAlignment="center"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="30dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -53,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:text="Simple and Effective Like a Bandaid!"
+            android:text="Simple and Effective! \n Like a Bandaid!"
             android:id="@+id/slogan"
             android:singleLine="false"
             android:layout_alignWithParentIfMissing="false"
