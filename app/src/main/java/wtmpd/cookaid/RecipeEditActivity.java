@@ -48,9 +48,10 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
 
     }
 
-    //TODO: make it so that app returns to previous view
     private void onDoneClick(){
+        //TODO: Add functionality to edit/add the recipe from editor when 'Done' button is pressed
 
+        super.finish();
     }
 
     private View.OnClickListener onClickAddIngredient() {

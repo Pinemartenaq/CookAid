@@ -49,6 +49,9 @@ public class RecipeViewActivity extends AppCompatActivity implements NavigationB
 
     public void onDeleteClick(){
         //TODO: implement delete functionalitiy
+
+
+        super.finish();
     }
 
     @Override
