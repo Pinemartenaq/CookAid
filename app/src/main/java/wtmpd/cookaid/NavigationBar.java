@@ -71,12 +71,6 @@ public class NavigationBar extends Fragment implements View.OnClickListener{
 
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onNavButtonPressed(Uri uri) {
-        if (mListener != null) {
-        }
-    }
-
     @Override
     public void onClick(View v) {
 

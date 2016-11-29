@@ -59,6 +59,8 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         Log.d("FLAG", "Search");
 
         //ToDo: Switch views and pass fragments
+        Intent intent = new Intent(getApplicationContext(), ResultsActivity.class);
+        startActivityForResult(intent, 0);
     }
 
     private ArrayList<RecipeItemFragment> getListOfRecipeFragmets(RecipeType type, RecipeCuisine cuisine, List<Ingredient> included, List<Ingredient> excluded) {
