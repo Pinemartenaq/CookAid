@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="wtmpd.cookaid.RecipeEditActivity"
-    android:background="@android:color/holo_orange_light">
+    android:background="@android:color/holo_orange_light"
+    android:id="@+id/RelativeLayout"
+    >
 
     <LinearLayout
         android:orientation="vertical"
@@ -122,7 +124,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="30dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:id="@+id/mLayout">
 
                 <Button
                     android:text="+"
@@ -149,6 +152,22 @@
                     android:textAlignment="gravity"
                     android:gravity="center_vertical" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/mLinLayout">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/mEditText"
+                    android:hint="Add an Ingredient"
+                    android:background="#ffffff" />
             </LinearLayout>
 
             <EditText
