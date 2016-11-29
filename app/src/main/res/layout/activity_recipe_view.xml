@@ -131,6 +131,32 @@
                 android:textSize="20sp"
                 android:layout_margin="10dp" />
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:text="Edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/eButton"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_blue_light"
+                    android:layout_marginRight="5dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+                <Button
+                    android:text="Delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dButton"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_blue_light"
+                    android:layout_marginLeft="5dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
