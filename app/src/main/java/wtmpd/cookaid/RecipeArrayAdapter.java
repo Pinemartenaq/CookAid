@@ -33,7 +33,6 @@ public class RecipeArrayAdapter extends ArrayAdapter {
         nameView.setText(names[position]);
         fitnessView.setText(fitnesses[position]);
 
-
         return rowView;
     }
 }

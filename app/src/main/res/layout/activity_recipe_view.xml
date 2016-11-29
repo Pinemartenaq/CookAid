@@ -144,7 +144,8 @@
                     android:layout_weight="1"
                     android:background="@android:color/holo_blue_light"
                     android:layout_marginRight="5dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:onClick="wtmpd.cookaid.RecipeViewActivity.onEditClick()" />
 
                 <Button
                     android:text="Delete"
