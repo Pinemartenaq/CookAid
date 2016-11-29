@@ -9,5 +9,10 @@ public class RecipeViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_view);
+
+        //ID for title - recipeTitle
+        //ID for short description - recipeDesView
+        //ID for ingredients - ingredientsView
+        //ID for directions - directionsView
     }
 }

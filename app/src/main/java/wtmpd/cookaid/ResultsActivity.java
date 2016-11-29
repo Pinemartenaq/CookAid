@@ -10,9 +10,5 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
-        //ID for title - recipeTitle
-        //ID for short description - recipeDesView
-        //ID for ingredients - ingredientsView
-        //ID for directions - directionsView
     }
 }
