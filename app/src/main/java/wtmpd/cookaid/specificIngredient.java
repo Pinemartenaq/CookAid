@@ -4,7 +4,7 @@ package wtmpd.cookaid;
  * @Author: WTMPD Group
  */
 
-public class SpecificIngredient {
+class SpecificIngredient {
 
     //Associations
     Ingredient ingredient;
