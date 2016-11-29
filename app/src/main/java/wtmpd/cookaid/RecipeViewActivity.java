@@ -9,8 +9,8 @@ import android.widget.Button;
 
 public class RecipeViewActivity extends AppCompatActivity implements NavigationBar.OnFragmentInteractionListener{
 
-    Button editButton;
-    Button deleteButton;
+    private Button editButton;
+    private Button deleteButton;
 
     //TODO: fill in recipe view with selected recipe from results activity
     @Override

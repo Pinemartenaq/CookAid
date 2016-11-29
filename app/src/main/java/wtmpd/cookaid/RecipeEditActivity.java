@@ -1,15 +1,12 @@
 package wtmpd.cookaid;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
@@ -26,19 +23,34 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
     private Button mButton;
     private LinearLayout mLinLayout;
     private EditText mEditText;
+    private Button doneButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_edit);
-        mLayout = (LinearLayout) findViewById(R.id.mLayout);
-        mTextView = (TextView) findViewById(R.id.textView7);
-        mButton = (Button) findViewById(R.id.editButton);
+        mLayout = (LinearLayout)findViewById(R.id.mLayout);
+        mTextView = (TextView)findViewById(R.id.textView7);
+        mButton = (Button)findViewById(R.id.pButton);
         mButton.setOnClickListener(onClickAddIngredient());
+        doneButton = (Button)findViewById(R.id.doneButton);
         TextView textView = new TextView(this);
         //textView.setText("New text");
         mLinLayout = (LinearLayout) findViewById(R.id.mLinLayout);
         mEditText = (EditText) findViewById(R.id.mEditText);
+
+       doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onDoneClick();
+            }
+        });
+
+    }
+
+    //TODO: make it so that app returns to previous view
+    private void onDoneClick(){
+
     }
 
     private View.OnClickListener onClickAddIngredient() {

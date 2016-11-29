@@ -23,10 +23,10 @@ public class NavigationBar extends Fragment implements View.OnClickListener{
 
     private OnFragmentInteractionListener mListener;
 
-    ImageButton homeBttn;
-    ImageButton searchBttn;
-    ImageButton addBttn;
-    ImageButton instructionBttn;
+    private ImageButton homeBttn;
+    private ImageButton searchBttn;
+    private ImageButton addBttn;
+    private ImageButton instructionBttn;
 
     public NavigationBar() {
         // Required empty public constructor
