@@ -15,8 +15,14 @@ public class ResultsActivity extends AppCompatActivity implements NavigationBar.
         setContentView(R.layout.activity_results);
 
         ListView listView = (ListView)findViewById(R.id.resultList);
-        String[] names = new String[]{"Pizza","Burrito","Salad"};
-        String[] fitnesses = new String[]{"1.3", "3.4", "45"};
+
+        SingletonStorage storage = SingletonStorage.getInstance(this);
+
+        String[] names = new String[storage.recipeNames.size()];
+        String[] fitnesses = new String[storage.recipeFitnesses.size()];
+
+        names = (String[])storage.recipeNames.toArray(names);
+        fitnesses = (String[])storage.recipeFitnesses.toArray(fitnesses);
 
         RecipeArrayAdapter adapter = new RecipeArrayAdapter(this, names, fitnesses);
         listView.setAdapter(adapter);
