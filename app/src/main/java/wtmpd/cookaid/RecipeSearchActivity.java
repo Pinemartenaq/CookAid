@@ -3,6 +3,8 @@ package wtmpd.cookaid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatImageButton;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +28,9 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         ingredients = (EditText)findViewById(R.id.SearchBar);
         type = (Spinner)findViewById(R.id.typeList);
         cuisine = (Spinner)findViewById(R.id.cuisineList);
-        search = (Button)findViewById(R.id.searchButton);
+        search = (Button)findViewById(R.id.goButton);
+
+        search.setOnClickListener(btnListener);
 
         //ToDo: Define on click listener
     }
@@ -53,6 +57,8 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         List<RecipeItemFragment> fragments = getListOfRecipeFragmets(storage.getType(type.getSelectedItem().toString()), storage.getCuisine(cuisine.getSelectedItem().toString()), include, exclude);
 
         //ToDo: Switch views and pass fragments
+        Intent intent = new Intent(getApplicationContext(), ResultsActivity.class);
+        startActivityForResult(intent, 0);
     }
 
     private ArrayList<RecipeItemFragment> getListOfRecipeFragmets(RecipeType type, RecipeCuisine cuisine, List<Ingredient> included, List<Ingredient> excluded) {
@@ -89,4 +95,20 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         Intent intent = new Intent(getApplicationContext(), InstructionActivity.class);
         startActivityForResult(intent, 0);
     }
+
+    private View.OnClickListener btnListener = new View.OnClickListener()
+    {
+
+        public void onClick(View v)
+        {
+            switch (v.getId()){
+                case R.id.goButton:
+                    searchForRecipe(v);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    };
 }

@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="wtmpd.cookaid.RecipeEditActivity"
-    android:background="@android:color/holo_orange_light">
+    android:background="@android:color/holo_orange_light"
+    android:id="@+id/RelativeLayout"
+    >
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@android:color/holo_blue_light"
-        android:id="@+id/linearLayout16" >
+        android:id="@+id/topLayout"
+        android:layout_alignParentTop="true">
 
         <TextView
             android:layout_width="match_parent"
@@ -33,7 +37,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout6" >
+        android:id="@+id/bottomLayout" >
 
         <fragment
             tools:layout="@layout/fragment_navigation_bar"
@@ -47,41 +51,154 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/linearLayout6"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/topLayout"
+        android:layout_above="@+id/bottomLayout">
 
-        <Button
-            android:text="+"
-            android:layout_height="wrap_content"
-            android:id="@+id/editButton"
-            android:background="#34b5e5"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:layout_width="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="112dp"
-            android:layout_marginEnd="112dp"
-            android:layout_weight="1"
-            android:layout_margin="20dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:layout_marginTop="20dp">
 
-        <Button
-            android:text="Done"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/doneButton"
-            android:layout_marginBottom="22dp"
-            android:background="#34b5e5"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:layout_above="@+id/linearLayout6"
-            android:layout_toLeftOf="@+id/editButton"
-            android:layout_toStartOf="@+id/editButton"
-            android:layout_weight="1"
-            android:layout_margin="20dp" />
-    </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp">
+
+                <ImageView
+                    app:srcCompat="@mipmap/icon_2"
+                    android:id="@+id/recipeIcon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="10dp" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingBottom="2dp">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:id="@+id/editName"
+                        android:layout_alignTop="@+id/recipeIcon"
+                        android:layout_toRightOf="@+id/recipeIcon"
+                        android:layout_toEndOf="@+id/recipeIcon"
+
+                        android:hint="Recipe Name"
+                        style="@style/Widget.AppCompat.AutoCompleteTextView"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                        android:background="#ffffff" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:id="@+id/editDescription"
+                        android:layout_below="@+id/editName"
+                        android:layout_alignLeft="@+id/editName"
+                        android:layout_alignStart="@+id/editName"
+                        android:hint="Description"
+                        android:background="#ffffff"
+                        android:layout_marginTop="10dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="30dp"
+                android:gravity="center_vertical"
+                android:id="@+id/mLayout">
+
+                <Button
+                    android:text="+"
+                    android:layout_height="match_parent"
+                    android:id="@+id/pButton"
+                    android:background="#34b5e5"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_alignTop="@+id/editIngredients"
+                    android:layout_alignRight="@+id/editIngredients"
+                    android:layout_alignEnd="@+id/editIngredients" />
+
+                <TextView
+                    android:text="Add Ingredients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView7"
+                    android:layout_weight="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="gravity"
+                    android:gravity="center_vertical" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/mLinLayout">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/mEditText"
+                    android:hint="Add an Ingredient"
+                    android:background="#ffffff" />
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editInstruction"
+                android:background="#ffffff"
+                android:layout_centerVertical="true"
+                android:layout_alignRight="@+id/pButton"
+                android:layout_alignEnd="@+id/pButton"
+                android:gravity="top"
+                android:hint="Add Cooking Instructions"
+                android:layout_marginTop="30dp" />
+
+            <Button
+                android:text="Done"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/doneButton"
+                android:background="#34b5e5"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:layout_above="@+id/bottomLayout"
+                android:layout_toLeftOf="@+id/pButton"
+                android:layout_toStartOf="@+id/pButton"
+                android:layout_weight="1"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">CookAid</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="introduction">
         Using Cook aid is as easy as using a Bandaid! By following the simple steps below, you will become a masterful chef.
     </string>
@@ -17,6 +15,9 @@
     </string>
     <string name="instructionsNav">
         Press the Instructions button on the navigation bar to visit this page at any time for help
+    </string>
+    <string name="mainSlogan">
+        Simple and Effective!\nLike a Bandaid!
     </string>
 
     <string-array name = "cuisines">

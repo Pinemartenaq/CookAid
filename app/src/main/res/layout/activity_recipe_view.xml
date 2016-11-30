@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,14 +22,9 @@
             android:id="@+id/recipeTitle"
             android:layout_gravity="center"
             android:textSize="30dp"
-            android:gravity="center_vertical|center_horizontal" />
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="@android:color/black" />
     </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout11" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -51,31 +47,117 @@
             android:layout_gravity="center" />
     </LinearLayout>
 
-    <Button
-        android:text="Delete"
-        android:layout_width="120dp"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/doneButton"
-        android:layout_marginLeft="49dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginBottom="72dp"
-        android:background="#34b5e5"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:layout_above="@+id/linearLayout12"
+        android:layout_below="@+id/linearLayout18"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/linearLayout12">
 
-    <Button
-        android:text="Edit"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/editButton"
-        android:layout_marginLeft="47dp"
-        android:layout_marginStart="47dp"
-        android:background="#34b5e5"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:layout_alignBaseline="@+id/doneButton"
-        android:layout_alignBottom="@+id/doneButton"
-        android:layout_toRightOf="@+id/doneButton"
-        android:layout_toEndOf="@+id/doneButton" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="105dp">
+
+                <ImageView
+                    android:layout_height="100dp"
+                    android:id="@+id/iconView"
+                    android:layout_width="100dp"
+                    app:srcCompat="@mipmap/icon_2" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/recipeDesView"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_weight="1.09"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_margin="10dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:text="Ingredients:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ingredientTitleView"
+                android:textSize="25sp"
+                android:layout_margin="10dp"
+                android:textColor="@android:color/black"
+                android:textAppearance="@style/TextAppearance.AppCompat" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/ingredientsView"
+                android:layout_margin="10dp"
+                android:textSize="20sp"
+                android:layout_weight="4.89"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:text="Directions:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/directionsTitleView"
+                android:textSize="25sp"
+                android:textColor="@android:color/black"
+                android:layout_margin="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/directionsView"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:layout_margin="10dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:text="Edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/eButton"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_blue_light"
+                    android:layout_marginRight="5dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+                <Button
+                    android:text="Delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dButton"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_blue_light"
+                    android:layout_marginLeft="5dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>

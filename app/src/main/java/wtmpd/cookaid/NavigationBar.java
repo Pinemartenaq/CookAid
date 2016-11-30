@@ -23,10 +23,10 @@ public class NavigationBar extends Fragment implements View.OnClickListener{
 
     private OnFragmentInteractionListener mListener;
 
-    ImageButton homeBttn;
-    ImageButton searchBttn;
-    ImageButton addBttn;
-    ImageButton instructionBttn;
+    private ImageButton homeBttn;
+    private ImageButton searchBttn;
+    private ImageButton addBttn;
+    private ImageButton instructionBttn;
 
     public NavigationBar() {
         // Required empty public constructor
@@ -69,12 +69,6 @@ public class NavigationBar extends Fragment implements View.OnClickListener{
 
         return view;
 
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onNavButtonPressed(Uri uri) {
-        if (mListener != null) {
-        }
     }
 
     @Override

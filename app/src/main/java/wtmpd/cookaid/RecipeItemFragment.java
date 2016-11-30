@@ -4,9 +4,11 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 
 /**
@@ -17,10 +19,12 @@ import android.view.ViewGroup;
  * Use the {@link RecipeItemFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RecipeItemFragment extends Fragment {
+public class RecipeItemFragment extends Fragment implements View.OnClickListener{
 
     Recipe recipe;
     int fitness;
+
+    LinearLayout result;
 
     private OnFragmentInteractionListener mListener;
 
@@ -43,18 +47,28 @@ public class RecipeItemFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipe_item, container, false);
+        View view = inflater.inflate(R.layout.fragment_recipe_item, container, false);
+
+        result = (LinearLayout) view.findViewById(R.id.recipeResult);
+        result.setOnClickListener(this);
+
+        return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.recipeResult:
+                mListener.onResultClick();
+                break;
+            default:
+                break;
         }
     }
+
 
     @Override
     public void onAttach(Context context) {
@@ -84,7 +98,6 @@ public class RecipeItemFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onResultClick();
     }
 }
