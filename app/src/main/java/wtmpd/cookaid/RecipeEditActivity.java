@@ -3,34 +3,34 @@ package wtmpd.cookaid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class RecipeEditActivity extends AppCompatActivity implements NavigationBar.OnFragmentInteractionListener {
 
-    private LinearLayout mLayout;
     private TextView mTextView;
     private Button mButton;
     private LinearLayout mLinLayout;
     private EditText mEditText;
     private Button doneButton;
+    private SingletonStorage storage = SingletonStorage.getInstance(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_edit);
-        mLayout = (LinearLayout)findViewById(R.id.mLayout);
         mTextView = (TextView)findViewById(R.id.textView7);
         mButton = (Button)findViewById(R.id.pButton);
         mButton.setOnClickListener(onClickAddIngredient());
         doneButton = (Button)findViewById(R.id.doneButton);
         TextView textView = new TextView(this);
-        //textView.setText("New text");
         mLinLayout = (LinearLayout) findViewById(R.id.mLinLayout);
         mEditText = (EditText) findViewById(R.id.mEditText);
 
@@ -40,11 +40,18 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
                 onDoneClick();
             }
         });
-
     }
 
     private void onDoneClick(){
         //TODO: Add functionality to edit/add the recipe from editor when 'Done' button is pressed
+
+        List<Editable> ingredients = new LinkedList<>();
+
+        for(int i = 0; i < mLinLayout.getChildCount(); i++) {
+            if( mLinLayout.getChildAt( i ) instanceof EditText ) {
+                ingredients.add(((EditText) mLinLayout.getChildAt(i)).getText());
+            }
+        }
 
         super.finish();
     }
