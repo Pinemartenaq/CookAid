@@ -18,8 +18,11 @@ public class ResultsActivity extends AppCompatActivity implements NavigationBar.
 
         SingletonStorage storage = SingletonStorage.getInstance(this);
 
-        String[] names = (String[])storage.recipeNames.toArray();
-        String[] fitnesses = (String[])storage.recipeFitnesses.toArray();
+        String[] names = new String[storage.recipeNames.size()];
+        String[] fitnesses = new String[storage.recipeFitnesses.size()];
+
+        names = (String[])storage.recipeNames.toArray(names);
+        fitnesses = (String[])storage.recipeFitnesses.toArray(fitnesses);
 
         RecipeArrayAdapter adapter = new RecipeArrayAdapter(this, names, fitnesses);
         listView.setAdapter(adapter);
