@@ -3,14 +3,11 @@ package wtmpd.cookaid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageButton;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,8 +28,6 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         search = (Button)findViewById(R.id.goButton);
 
         search.setOnClickListener(btnListener);
-
-        //ToDo: Define on click listener
     }
 
     public void searchForRecipe(View view){
@@ -54,23 +49,24 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         for(String s : excludeStringArray)
             exclude.add(storage.getIngredient(s.trim()));
 
-        List<RecipeItemFragment> fragments = getListOfRecipeFragmets(storage.getType(type.getSelectedItem().toString()), storage.getCuisine(cuisine.getSelectedItem().toString()), include, exclude);
-
-        //ToDo: Switch views and pass fragments
         Intent intent = new Intent(getApplicationContext(), ResultsActivity.class);
         startActivityForResult(intent, 0);
     }
 
-    private ArrayList<RecipeItemFragment> getListOfRecipeFragmets(RecipeType type, RecipeCuisine cuisine, List<Ingredient> included, List<Ingredient> excluded) {
+    private void getListOfRecipes(RecipeType type, RecipeCuisine cuisine, List<Ingredient> included, List<Ingredient> excluded) {
 
         SingletonStorage storage = SingletonStorage.getInstance(this);
-        ArrayList<RecipeItemFragment> fragments = new ArrayList<>();
+
+        //Clean the results
+        storage.recipeNames = new LinkedList<String>();
+        storage.recipeFitnesses = new LinkedList<String>();
 
         for (Recipe recipe : storage.getRecipes())
             if (recipe.getFitness(excluded) == 0 && recipe.getCuisine() == cuisine && recipe.getType() == type) {
-                fragments.add(recipe.getFragment(included));
+                String[] retRecipe = new String[2];
+                storage.recipeNames.add(recipe.getName());
+                storage.recipeFitnesses.add(Integer.toString(recipe.getFitness(included)));
             }
-        return fragments;
     }
 
     @Override

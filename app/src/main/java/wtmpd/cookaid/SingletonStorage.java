@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -22,6 +23,10 @@ public class SingletonStorage extends SQLiteOpenHelper{
     private final static String DATABASE_NAME = "CookAid.db";
     private final static String TABLE_NAME = "Recipes";
     private final static String[] COLUMN_HEADERS = {"ID", "Name", "Type", "Cuisine", "Ingredients", "Preptime", "Instructions"};
+
+    //Attributes
+    public LinkedList<String> recipeNames;
+    public LinkedList<String> recipeFitnesses;
 
     //Association
     private List<Recipe> recipes;
