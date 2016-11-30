@@ -49,6 +49,8 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         for(String s : excludeStringArray)
             exclude.add(storage.getIngredient(s.trim()));
 
+        getListOfRecipes(storage.getType(type.getSelectedItem().toString()), storage.getCuisine(cuisine.getSelectedItem().toString()), include, exclude);
+
         Intent intent = new Intent(getApplicationContext(), ResultsActivity.class);
         startActivityForResult(intent, 0);
     }
