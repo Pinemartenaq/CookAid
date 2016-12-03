@@ -105,7 +105,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
                         android:id="@+id/editTypeAndCuisine"
-                        android:hint="\<Type\>, \<Cuisine\>"
+                        android:hint="Type, Cuisine"
                         android:background="#ffffff"
                         android:layout_marginTop="10dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
@@ -117,9 +117,6 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_marginTop="30dp"
                 android:gravity="center_vertical"
                 android:id="@+id/mLayout">
@@ -131,10 +128,7 @@
                     android:background="#34b5e5"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_alignTop="@+id/editIngredients"
-                    android:layout_alignRight="@+id/editIngredients"
-                    android:layout_alignEnd="@+id/editIngredients" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:text="Add Ingredients:                                 (Click to add each ingredient)"
@@ -174,9 +168,6 @@
                 android:ems="10"
                 android:id="@+id/editInstruction"
                 android:background="#ffffff"
-                android:layout_centerVertical="true"
-                android:layout_alignRight="@+id/pButton"
-                android:layout_alignEnd="@+id/pButton"
                 android:gravity="top"
                 android:hint="Add Cooking Instructions"
                 android:layout_marginTop="30dp" />
@@ -188,9 +179,6 @@
                 android:id="@+id/doneButton"
                 android:background="#34b5e5"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:layout_above="@+id/bottomLayout"
-                android:layout_toLeftOf="@+id/pButton"
-                android:layout_toStartOf="@+id/pButton"
                 android:layout_weight="1"
                 android:layout_marginTop="30dp"
                 android:layout_gravity="center_horizontal" />
