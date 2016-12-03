@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -81,6 +82,8 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
                 ingredients,
                 ((EditText)findViewById(R.id.editInstruction)).getText().toString()
         ));
+
+        Toast.makeText(this, Integer.toString(storage.getRecipes().size()), Toast.LENGTH_LONG);
 
         Intent intent = new Intent(getApplicationContext(), RecipeViewActivity.class);
         startActivityForResult(intent, 0);
