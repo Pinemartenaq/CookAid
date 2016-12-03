@@ -73,7 +73,7 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
             }
         }
 
-        storage.addRecipe(new Recipe(
+        storage.addRecipe(storage.storedRecipe =  new Recipe(
                 ((EditText)findViewById(R.id.editName)).getText().toString(),
                 0,
                 cuisine,
@@ -82,7 +82,8 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
                 ((EditText)findViewById(R.id.editInstruction)).getText().toString()
         ));
 
-        super.finish();
+        Intent intent = new Intent(getApplicationContext(), RecipeViewActivity.class);
+        startActivityForResult(intent, 0);
     }
 
     private View.OnClickListener onClickAddIngredient() {
