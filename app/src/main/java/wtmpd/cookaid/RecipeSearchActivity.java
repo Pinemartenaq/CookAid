@@ -86,12 +86,12 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         storage.recipeNames = new LinkedList<String>();
         storage.recipeFitnesses = new LinkedList<String>();
 
-        for (Recipe recipe : storage.getRecipes())
-            if (recipe.getFitness(excluded) == 0 && recipe.getCuisine() == cuisine && recipe.getType() == type) {
-                String[] retRecipe = new String[2];
-                storage.recipeNames.add(recipe.getName());
-                storage.recipeFitnesses.add(Integer.toString(recipe.getFitness(included)));
-            }
+        for (Recipe recipe : storage.getRecipes()) {
+            //if (recipe.getFitness(excluded) == 0 && recipe.getCuisine() == cuisine && recipe.getType() == type) {
+            storage.recipeNames.add(recipe.getName());
+            storage.recipeFitnesses.add(Integer.toString(recipe.getFitness(included)));
+            //}
+        }
     }
 
     @Override
