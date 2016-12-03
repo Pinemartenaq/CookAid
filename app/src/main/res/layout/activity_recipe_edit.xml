@@ -157,7 +157,7 @@
                     android:inputType="textPersonName"
                     android:ems="10"
                     android:id="@+id/mEditText"
-                    android:hint="[not] <Ingredient>, <Quantity>"
+                    android:hint="not Ingredient, Quantity"
                     android:background="#ffffff" />
             </LinearLayout>
 
