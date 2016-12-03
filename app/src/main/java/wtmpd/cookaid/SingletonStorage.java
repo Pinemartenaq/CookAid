@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -73,8 +74,10 @@ public class SingletonStorage extends SQLiteOpenHelper{
     //Public Methods
     public boolean addRecipe(Recipe recipe){
         int id = addRecipeToDatabase(recipe);
-        if (id == -1)
+        if (id == -1) {
+            Log.d("FATAL ERROR", "E1");
             return false;
+        }
         recipe.setID(id);
         return true;
     }
@@ -95,6 +98,7 @@ public class SingletonStorage extends SQLiteOpenHelper{
      * @return recipe id
      */
     private int addRecipeToDatabase(Recipe recipe) {
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues entry = new ContentValues();
 
