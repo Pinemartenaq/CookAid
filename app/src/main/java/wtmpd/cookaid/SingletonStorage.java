@@ -20,6 +20,9 @@ public class SingletonStorage extends SQLiteOpenHelper{
     //Singleton
     private static SingletonStorage storage = null;
 
+    //Id creator
+    private static int id = 0;
+
     //Constants
     private final static String DATABASE_NAME = "CookAid.db";
     private final static String TABLE_NAME = "Recipes";
@@ -112,6 +115,8 @@ public class SingletonStorage extends SQLiteOpenHelper{
         entry.put(COLUMN_HEADERS[4], ingredientsString.toString());
         entry.put(COLUMN_HEADERS[5], Integer.toString(recipe.getPrepTime()));
         entry.put(COLUMN_HEADERS[6], recipe.getInstructions());
+
+        db.insert(TABLE_NAME, null, entry);
 
         Cursor cursor = db.rawQuery("SELECT " + COLUMN_HEADERS[0] + " FROM " + TABLE_NAME, null);
         cursor.moveToLast();
