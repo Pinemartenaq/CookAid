@@ -75,6 +75,7 @@ public class SingletonStorage extends SQLiteOpenHelper{
 
     //Public Methods
     public boolean addRecipe(Recipe recipe){
+        recipes.add(recipe);
         int id = addRecipeToDatabase(recipe);
         if (id == -1) {
             return false;
