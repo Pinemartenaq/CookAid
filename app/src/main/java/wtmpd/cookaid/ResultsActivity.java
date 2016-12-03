@@ -24,7 +24,10 @@ public class ResultsActivity extends AppCompatActivity implements NavigationBar.
         names = storage.recipeNames.toArray(names);
         fitnesses = storage.recipeFitnesses.toArray(fitnesses);
 
-        RecipeArrayAdapter adapter = new RecipeArrayAdapter(this, names, fitnesses);
+        String[] backupname = {"1", "2"};
+        String[] backupfit = {"3", "4"};
+
+        RecipeArrayAdapter adapter = new RecipeArrayAdapter(this, names.length > 0 ? names: backupname, fitnesses.length > 0 ? fitnesses : backupfit);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
