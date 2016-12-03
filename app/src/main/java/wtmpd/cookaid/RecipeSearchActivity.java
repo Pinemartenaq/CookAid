@@ -132,10 +132,8 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
 
             //======================================================================================
             // At this point trueIngredients is a list<String> of ingredients that needs to be in
-            // the recipe and falseIngredients is a list<String> of ingredients that not be in the
-            // recipe.
-
-
+            // the recipe and falseIngredients is a list<String> of ingredients that should not be
+            // in the recipe.
         }
 
     };
