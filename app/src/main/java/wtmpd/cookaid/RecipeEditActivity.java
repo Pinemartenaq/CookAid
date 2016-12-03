@@ -72,7 +72,7 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
                     ingredients.add(new SpecificIngredient(storage.getIngredient(siStringArray[0]), siStringArray.length < 2 ? "As Desired": siStringArray[1]));
             }
         }
-
+        /*
         storage.addRecipe(new Recipe(
                 ((EditText)findViewById(R.id.editName)).getText().toString(),
                 0,
@@ -81,7 +81,7 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
                 ingredients,
                 ((EditText)findViewById(R.id.editInstruction)).getText().toString()
         ));
-
+        */
         super.finish();
     }
 
