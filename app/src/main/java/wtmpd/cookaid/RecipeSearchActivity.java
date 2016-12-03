@@ -10,6 +10,7 @@ import android.widget.Spinner;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.lang.*;
 
 public class RecipeSearchActivity extends AppCompatActivity implements NavigationBar.OnFragmentInteractionListener{
 
@@ -99,13 +100,42 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
 
         public void onClick(View v)
         {
-            switch (v.getId()){
+
+            /* switch (v.getId()){
                 case R.id.goButton:
                     searchForRecipe(v);
                     break;
                 default:
                     break;
+            } */
+            // Commented out for testing.
+
+            // the following will return to arrays, one for the ingrediants and one for the NOT
+            // ingrediants.
+
+            //======================================================================================
+            String s = ingredients.getText().toString();
+            String[] ingredientList = s.split(",");
+
+            List<String> trueIngredients = new LinkedList<String>();
+            List<String> falseIngredients = new LinkedList<String>();
+
+            for(int i = 0;i<ingredientList.length;i++) {
+                if(ingredientList[i].startsWith("NOT")){
+                        falseIngredients.add(ingredientList[i].substring(3));
+                } else if (ingredientList[i].startsWith(" NOT")) {
+                    falseIngredients.add(ingredientList[i].substring(4));
+                } else {
+                    trueIngredients.add(ingredientList[i]);
+                }
             }
+
+            //======================================================================================
+            // At this point trueIngredients is a list<String> of ingredients that needs to be in
+            // the recipe and falseIngredients is a list<String> of ingredients that not be in the
+            // recipe.
+
+
         }
 
     };
