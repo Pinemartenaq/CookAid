@@ -23,7 +23,7 @@ public class SingletonStorage extends SQLiteOpenHelper{
     private static int id = 0;
 
     //Constants
-    private final static String DATABASE_NAME = "CookAid.db";
+    private final static String DATABASE_NAME = "CookAidRecipeDatabase.db";
     private final static String TABLE_NAME = "Recipes";
     private final static String[] COLUMN_HEADERS = {"ID", "Name", "Type", "Cuisine", "Ingredients", "Preptime", "Instructions"};
 
