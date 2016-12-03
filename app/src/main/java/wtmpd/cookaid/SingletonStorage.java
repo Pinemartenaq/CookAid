@@ -198,7 +198,7 @@ public class SingletonStorage extends SQLiteOpenHelper{
         List<SpecificIngredient> ingredientList = new ArrayList<SpecificIngredient>();
         String[] ingredientArray = ingredientString.split(",");
 
-        for(int i = 0; i < ingredientArray.length; i+=2){
+        for(int i = 0; i < ingredientArray.length - 1; i+=2){
             ingredientList.add(new SpecificIngredient(getIngredient(ingredientArray[i]), ingredientArray[i+1]));
         }
 
