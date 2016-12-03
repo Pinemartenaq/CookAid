@@ -4,15 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.lang.*;
 
 public class RecipeSearchActivity extends AppCompatActivity implements NavigationBar.OnFragmentInteractionListener{
+
+    SingletonStorage storage;
 
     EditText ingredients;
     Spinner type, cuisine;
@@ -29,6 +32,23 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         search = (Button)findViewById(R.id.goButton);
 
         search.setOnClickListener(btnListener);
+
+        storage = SingletonStorage.getInstance(this);
+
+        ArrayList<String> typeStringArray = new ArrayList<>();
+        ArrayList<String> cuisineStringArray = new ArrayList<>();
+
+        for(RecipeType t : storage.getTypes())
+            typeStringArray.add(t.getName());
+
+        for(RecipeCuisine c : storage.getCuisines())
+            cuisineStringArray.add(c.getName());
+
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, typeStringArray);
+        ArrayAdapter<String> cuisineAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, cuisineStringArray);
+
+        type.setAdapter(typeAdapter);
+        cuisine.setAdapter(cuisineAdapter);
     }
 
     public void searchForRecipe(View view){

@@ -49,10 +49,10 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
             EditText name = (EditText)findViewById(R.id.editName);
             name.setText(recipe.getName());
 
-            EditText typeAndCuisine = (EditText)findViewById(R.id.editName);
+            EditText typeAndCuisine = (EditText)findViewById(R.id.editTypeAndCuisine);
             typeAndCuisine.setText(recipe.getType().getName() + ", " + recipe.getCuisine().getName());
 
-            EditText instructions = (EditText)findViewById(R.id.editName);
+            EditText instructions = (EditText)findViewById(R.id.editInstruction);
             instructions.setText(recipe.getInstructions());
 
             for(SpecificIngredient si : recipe.getSpecificIngredients()){
