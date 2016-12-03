@@ -122,14 +122,13 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
 
             for(int i = 0;i<ingredientList.length;i++) {
                 if(ingredientList[i].startsWith("NOT")){
-                        falseIngredients.add(ingredientList[i].substring(3));
+                        falseIngredients.add(ingredientList[i].substring(4));
                 } else if (ingredientList[i].startsWith(" NOT")) {
-                    falseIngredients.add(ingredientList[i].substring(4));
+                    falseIngredients.add(ingredientList[i].substring(5));
                 } else {
                     trueIngredients.add(ingredientList[i]);
                 }
             }
-
             //======================================================================================
             // At this point trueIngredients is a list<String> of ingredients that needs to be in
             // the recipe and falseIngredients is a list<String> of ingredients that should not be
