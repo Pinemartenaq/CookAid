@@ -25,7 +25,7 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_edit);
-        mTextView = (TextView)findViewById(R.id.textView7);
+        mTextView = (TextView)findViewById(R.id.txtTip);
         mButton = (Button)findViewById(R.id.pButton);
         mButton.setOnClickListener(onClickAddIngredient());
         doneButton = (Button)findViewById(R.id.doneButton);
