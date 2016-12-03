@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Recipe Editor"
+            android:text="New Recipe"
             android:id="@+id/editTitle"
             android:layout_gravity="center"
             android:textSize="30dp"

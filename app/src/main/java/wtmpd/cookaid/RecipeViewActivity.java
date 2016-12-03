@@ -14,7 +14,6 @@ public class RecipeViewActivity extends AppCompatActivity implements NavigationB
 
     SingletonStorage storage;
 
-    //TODO: fill in recipe view with selected recipe from results activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,33 +40,35 @@ public class RecipeViewActivity extends AppCompatActivity implements NavigationB
 
         Recipe recipe = storage.storedRecipe;
 
-        //ID for title - recipeTitle
-        TextView titleDisplay = (TextView)findViewById(R.id.recipeTitle);
-        titleDisplay.setText(recipe.getName());
+        if(recipe != null) {
+            //ID for title - recipeTitle
+            TextView titleDisplay = (TextView) findViewById(R.id.recipeTitle);
+            titleDisplay.setText(recipe.getName());
 
-        //ID for short description - recipeDesView
-        TextView typeAndCuisineDisplay = (TextView)findViewById(R.id.recipeDesView);
-        typeAndCuisineDisplay.setText(recipe.getType() + ", " + recipe.getCuisine());
+            //ID for short description - recipeDesView
+            TextView typeAndCuisineDisplay = (TextView) findViewById(R.id.recipeDesView);
+            typeAndCuisineDisplay.setText(recipe.getType().getName() + ", " + recipe.getCuisine().getName());
 
-        //ID for ingredients - ingredientsView
-        TextView ingredientsDisplay = (TextView)findViewById(R.id.ingredientsView);
-        StringBuilder ingredientsString = new StringBuilder();
+            //ID for ingredients - ingredientsView
+            TextView ingredientsDisplay = (TextView) findViewById(R.id.ingredientsView);
+            StringBuilder ingredientsString = new StringBuilder();
 
-        for(SpecificIngredient si : recipe.getSpecificIngredients()){
-            ingredientsString.append(si.getMeasurement()). append(" ");
-            try{
-                Double.parseDouble(si.getMeasurement());
-            } catch (NumberFormatException e){
-                ingredientsString.append("of ");
+            for (SpecificIngredient si : recipe.getSpecificIngredients()) {
+                ingredientsString.append(si.getMeasurement()).append(" ");
+                try {
+                    Double.parseDouble(si.getMeasurement());
+                } catch (NumberFormatException e) {
+                    ingredientsString.append("of ");
+                }
+                ingredientsString.append(si.getIngredient().getName()).append(", ");
             }
-            ingredientsString.append(si.getIngredient().getName()).append(", ");
+
+            ingredientsDisplay.setText(ingredientsString.toString());
+
+            //ID for directions - directionsView
+            TextView directionsDisplay = (TextView) findViewById(R.id.directionsView);
+            directionsDisplay.setText(recipe.getInstructions());
         }
-
-        ingredientsDisplay.setText(ingredientsString.toString());
-
-        //ID for directions - directionsView
-        TextView directionsDisplay = (TextView)findViewById(R.id.directionsView);
-        directionsDisplay.setText(recipe.getInstructions());
     }
 
     public void onEditClick(){

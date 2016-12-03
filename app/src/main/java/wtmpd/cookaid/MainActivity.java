@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBar.OnF
 
     @Override
     public void onAddClick() {
+        storage.storedRecipe = null;
         Intent intent = new Intent(getApplicationContext(), RecipeEditActivity.class);
         startActivityForResult(intent, 0);
     }

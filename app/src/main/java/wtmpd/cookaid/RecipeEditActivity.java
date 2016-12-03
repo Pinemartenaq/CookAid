@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -40,6 +39,28 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
                 onDoneClick();
             }
         });
+
+        Recipe recipe = storage.storedRecipe;
+
+        if(recipe != null){
+            TextView title = (TextView)findViewById(R.id.editTitle);
+            title.setText("Recipe Editor");
+
+            EditText name = (EditText)findViewById(R.id.editName);
+            name.setText(recipe.getName());
+
+            EditText typeAndCuisine = (EditText)findViewById(R.id.editName);
+            typeAndCuisine.setText(recipe.getType().getName() + ", " + recipe.getCuisine().getName());
+
+            EditText instructions = (EditText)findViewById(R.id.editName);
+            instructions.setText(recipe.getInstructions());
+
+            for(SpecificIngredient si : recipe.getSpecificIngredients()){
+                EditText et;
+                mLinLayout.addView(et = createNewTextView(mTextView.getText().toString()));
+                et.setText(si.getIngredient().getName() + si.getMeasurement());
+            }
+        }
     }
 
     private void onDoneClick(){
@@ -74,16 +95,28 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
             }
         }
 
-        storage.addRecipe(storage.storedRecipe =  new Recipe(
-                ((EditText)findViewById(R.id.editName)).getText().toString(),
-                0,
-                cuisine,
-                type,
-                ingredients,
-                ((EditText)findViewById(R.id.editInstruction)).getText().toString()
-        ));
-
-        Toast.makeText(this, Integer.toString(storage.getRecipes().size()), Toast.LENGTH_LONG);
+        if(storage.storedRecipe == null)
+            storage.addRecipe(storage.storedRecipe =  new Recipe(
+                    ((EditText)findViewById(R.id.editName)).getText().toString(),
+                    0,
+                    cuisine,
+                    type,
+                    ingredients,
+                    ((EditText)findViewById(R.id.editInstruction)).getText().toString()
+            ));
+        else {
+            String id = storage.storedRecipe.getID();
+            storage.storedRecipe =  new Recipe(
+                    ((EditText)findViewById(R.id.editName)).getText().toString(),
+                    0,
+                    cuisine,
+                    type,
+                    ingredients,
+                    ((EditText)findViewById(R.id.editInstruction)).getText().toString()
+            );
+            storage.storedRecipe.setID(Integer.parseInt(id));
+            storage.updateRecipe(storage.storedRecipe);
+        }
 
         Intent intent = new Intent(getApplicationContext(), RecipeViewActivity.class);
         startActivityForResult(intent, 0);
