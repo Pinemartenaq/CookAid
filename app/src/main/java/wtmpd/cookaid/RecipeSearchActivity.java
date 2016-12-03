@@ -40,9 +40,11 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
 
         for(RecipeType t : storage.getTypes())
             typeStringArray.add(t.getName());
+        typeStringArray.add("Any");
 
         for(RecipeCuisine c : storage.getCuisines())
             cuisineStringArray.add(c.getName());
+        cuisineStringArray.add("Any");
 
         ArrayAdapter<String> typeAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, typeStringArray);
         ArrayAdapter<String> cuisineAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, cuisineStringArray);
