@@ -35,7 +35,7 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
 
         SingletonStorage storage = SingletonStorage.getInstance(this);
 
-        List<Ingredient> include = new LinkedList<>();
+        List<Ingredient> include = new LinkedList<> ();
         List<Ingredient> exclude = new LinkedList<>();
 
         String[] splitString = ingredients.getText().toString().toLowerCase().split("not");
