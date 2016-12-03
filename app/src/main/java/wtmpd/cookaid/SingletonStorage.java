@@ -24,9 +24,16 @@ public class SingletonStorage extends SQLiteOpenHelper{
     private final static String TABLE_NAME = "Recipes";
     private final static String[] COLUMN_HEADERS = {"ID", "Name", "Type", "Cuisine", "Ingredients", "Preptime", "Instructions"};
 
-    //Attributes
+    //Public variables used to pass information from one activity to another
     public LinkedList<String> recipeNames;
     public LinkedList<String> recipeFitnesses;
+    public Recipe storedRecipe;
+
+        //Query results
+    public String queryByName = null;
+    public String queryByIngredients = null;
+    public RecipeType queryType = null;
+    public RecipeCuisine queryCuisine = null;
 
     //Association
     private List<Recipe> recipes;

@@ -104,11 +104,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
-                        android:id="@+id/editDescription"
+                        android:id="@+id/editTypeAndCuisine"
                         android:layout_below="@+id/editName"
                         android:layout_alignLeft="@+id/editName"
                         android:layout_alignStart="@+id/editName"
-                        android:hint="Description"
+                        android:hint="<Type>, <Cuisine>"
                         android:background="#ffffff"
                         android:layout_marginTop="10dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
@@ -140,9 +140,9 @@
                     android:layout_alignEnd="@+id/editIngredients" />
 
                 <TextView
-                    android:text="Add Ingredients:                     (quantity, ingredient)"
+                    android:text="Add Ingredients:                                 (Click to add each ingredient)"
                     android:layout_height="match_parent"
-                    android:id="@+id/textView7"
+                    android:id="@+id/txtTip"
                     android:layout_weight="1"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="#000000"
@@ -166,7 +166,7 @@
                     android:inputType="textPersonName"
                     android:ems="10"
                     android:id="@+id/mEditText"
-                    android:hint="Add an Ingredient"
+                    android:hint="[not] <Ingredient>, <Quantity>"
                     android:background="#ffffff" />
             </LinearLayout>
 

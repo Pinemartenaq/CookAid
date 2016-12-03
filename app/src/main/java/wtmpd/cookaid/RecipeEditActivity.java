@@ -3,7 +3,6 @@ package wtmpd.cookaid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,15 +42,45 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
     }
 
     private void onDoneClick(){
-        //TODO: Add functionality to edit/add the recipe from editor when 'Done' button is pressed
 
-        List<Editable> ingredients = new LinkedList<>();
+        List<SpecificIngredient> ingredients = new LinkedList<>();
 
+        //Grab type and cuisine String
+        String[] typeAndCuisineString = ((EditText)findViewById(R.id.editTypeAndCuisine)).getText().toString().split(",");
+
+        //Clean them
+        for (String s : typeAndCuisineString)
+            s.trim();
+
+        //Convert to type if possible, else None
+        RecipeType type = (typeAndCuisineString.length == 0 || typeAndCuisineString[0] == null || "".equals(typeAndCuisineString[0])) ?
+                storage.getType("None"):
+                storage.getType(typeAndCuisineString[0]);
+
+        //Convert to cuisine if possible, else None
+        RecipeCuisine cuisine = (typeAndCuisineString.length < 2 || typeAndCuisineString[1] == null || "".equals(typeAndCuisineString[1])) ?
+                storage.getCuisine("None"):
+                storage.getCuisine(typeAndCuisineString[0]);;
+
+        //Get ingredient Strings
         for(int i = 0; i < mLinLayout.getChildCount(); i++) {
             if( mLinLayout.getChildAt( i ) instanceof EditText ) {
-                ingredients.add(((EditText) mLinLayout.getChildAt(i)).getText());
+                //Get ingredient String
+                String[] siStringArray = (((EditText)mLinLayout.getChildAt(i)).getText()).toString().split(",");
+                //If it isn't empty add it to ingredients
+                if(!(siStringArray.length == 0 || siStringArray[0] == null || "".equals(siStringArray[0])))
+                    ingredients.add(new SpecificIngredient(storage.getIngredient(siStringArray[0]), siStringArray.length < 2 ? "As Desired": siStringArray[1]));
             }
         }
+
+        storage.addRecipe(new Recipe(
+                ((EditText)findViewById(R.id.editName)).getText().toString(),
+                0,
+                cuisine,
+                type,
+                ingredients,
+                ((EditText)findViewById(R.id.editInstruction)).getText().toString()
+        ));
 
         super.finish();
     }
