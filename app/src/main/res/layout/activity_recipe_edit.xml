@@ -105,10 +105,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
                         android:id="@+id/editTypeAndCuisine"
-                        android:layout_below="@+id/editName"
-                        android:layout_alignLeft="@+id/editName"
-                        android:layout_alignStart="@+id/editName"
-                        android:hint="<Type>, <Cuisine>"
+                        android:hint="\<Type\>, \<Cuisine\>"
                         android:background="#ffffff"
                         android:layout_marginTop="10dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
