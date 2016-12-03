@@ -170,7 +170,7 @@ public class SingletonStorage extends SQLiteOpenHelper{
      *
      * @return
      */
-    private boolean createObjectsFromDatabase(){
+    private boolean createObjectsFromDatabase(){/*
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
@@ -187,7 +187,7 @@ public class SingletonStorage extends SQLiteOpenHelper{
                 );
                 newRecipe.setID(cursor.getInt(0)); //ID
                 recipes.add(newRecipe);
-            }
+            }*/
         return true;
 
     }
