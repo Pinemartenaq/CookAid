@@ -34,14 +34,14 @@ public class Recipe {
         this.prepTime = prepTime;
 
         this.cuisine = cuisine;
-        cuisine.addRecipe(this);
+        //cuisine.addRecipe(this);
 
         this.type = type;
-        type.addRecipe(this);
+        //type.addRecipe(this);
 
         this.ingredients = ingredients;
-        for(SpecificIngredient si : ingredients)
-            si.getIngredient().addRecipe(this);
+        //for(SpecificIngredient si : ingredients)
+            //si.getIngredient().addRecipe(this);
 
         this.cookingDirections = cookingDirections;
     }

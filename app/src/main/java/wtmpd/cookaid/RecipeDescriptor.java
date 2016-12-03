@@ -19,6 +19,6 @@ public class RecipeDescriptor {
     public boolean hasRecipes() { return recipes.size() != 0; }
 
     //Setters
-    public void addRecipe(Recipe newRecipe) { recipes.add(newRecipe); }
+    //public void addRecipe(Recipe newRecipe) { recipes.add(newRecipe); }
     public boolean removeRecipe(Recipe oldRecipe) { return recipes.remove(oldRecipe); }
 }

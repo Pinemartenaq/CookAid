@@ -81,7 +81,7 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
                 ingredients,
                 ((EditText)findViewById(R.id.editInstruction)).getText().toString()
         ));
-        
+
         super.finish();
     }
 
