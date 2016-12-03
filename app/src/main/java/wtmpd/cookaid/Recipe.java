@@ -54,6 +54,7 @@ public class Recipe {
     public RecipeCuisine getCuisine() { return cuisine; }
     public RecipeType getType() { return type; }
     public List<SpecificIngredient> getSpecificIngredients() { return ingredients; }
+
     public List<Ingredient> getIngredients() {
         List ingredientList = new LinkedList<Ingredient>();
         for (SpecificIngredient si : ingredients)

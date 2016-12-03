@@ -5,17 +5,22 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class RecipeViewActivity extends AppCompatActivity implements NavigationBar.OnFragmentInteractionListener{
 
     private Button editButton;
     private Button deleteButton;
 
+    SingletonStorage storage;
+
     //TODO: fill in recipe view with selected recipe from results activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_view);
+
+        storage = SingletonStorage.getInstance(this);
 
         editButton = (Button)findViewById(R.id.eButton);
         deleteButton = (Button)findViewById(R.id.dButton);
@@ -34,23 +39,48 @@ public class RecipeViewActivity extends AppCompatActivity implements NavigationB
             }
         });
 
+        Recipe recipe = storage.storedRecipe;
+
         //ID for title - recipeTitle
+        TextView titleDisplay = (TextView)findViewById(R.id.recipeTitle);
+        titleDisplay.setText(recipe.getName());
+
         //ID for short description - recipeDesView
+        TextView typeAndCuisineDisplay = (TextView)findViewById(R.id.recipeDesView);
+        typeAndCuisineDisplay.setText(recipe.getType() + ", " + recipe.getCuisine());
+
         //ID for ingredients - ingredientsView
+        TextView ingredientsDisplay = (TextView)findViewById(R.id.ingredientsView);
+        StringBuilder ingredientsString = new StringBuilder();
+
+        for(SpecificIngredient si : recipe.getSpecificIngredients()){
+            ingredientsString.append(si.getMeasurement()). append(" ");
+            try{
+                Double.parseDouble(si.getMeasurement());
+            } catch (NumberFormatException e){
+                ingredientsString.append("of ");
+            }
+            ingredientsString.append(si.getIngredient().getName()).append(", ");
+        }
+
+        ingredientsDisplay.setText(ingredientsString.toString());
+
         //ID for directions - directionsView
+        TextView directionsDisplay = (TextView)findViewById(R.id.directionsView);
+        directionsDisplay.setText(recipe.getInstructions());
     }
 
     public void onEditClick(){
-        //TODO: Make it so that information of recipe gets filled into editor
         Intent intent = new Intent(getApplicationContext(), RecipeEditActivity.class);
         startActivityForResult(intent, 0);
     }
 
     public void onDeleteClick(){
-        //TODO: implement delete functionalitiy
 
+        storage.deleteRecipe(storage.storedRecipe);
+        storage.storedRecipe = null;
 
-        super.finish();
+        onHomeClick();
     }
 
     @Override
