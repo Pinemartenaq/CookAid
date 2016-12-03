@@ -175,7 +175,8 @@ public class SingletonStorage extends SQLiteOpenHelper{
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
         if(cursor.getCount() > 0)
-            do {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
                 Recipe newRecipe = new Recipe(
                         cursor.getString(1), //name
                         Integer.parseInt(cursor.getString(5)), //time
@@ -186,7 +187,7 @@ public class SingletonStorage extends SQLiteOpenHelper{
                 );
                 newRecipe.setID(cursor.getInt(0)); //ID
                 recipes.add(newRecipe);
-            } while (!cursor.isLast());
+            }
         return true;
 
     }
