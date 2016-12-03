@@ -88,7 +88,10 @@ public class SingletonStorage extends SQLiteOpenHelper{
     }
 
     public boolean deleteRecipe(Recipe recipe){
-        return deleteRecipe(recipe);
+        boolean result =  removeRecipeFromDatabase(recipe);
+        if(result)
+            result = recipes.remove(recipe);
+        return result;
     }
 
     //Database functions
