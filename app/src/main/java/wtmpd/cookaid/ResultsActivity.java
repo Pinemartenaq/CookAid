@@ -23,7 +23,7 @@ public class ResultsActivity extends AppCompatActivity implements NavigationBar.
 
         names = storage.recipeNames.toArray(names);
         fitnesses = storage.recipeFitnesses.toArray(fitnesses);
-
+        
         String[] backupname = {};
         String[] backupfit = {};
 
