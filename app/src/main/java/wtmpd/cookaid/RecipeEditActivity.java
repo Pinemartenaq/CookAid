@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -82,7 +84,7 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
         //Convert to cuisine if possible, else None
         RecipeCuisine cuisine = (typeAndCuisineString.length < 2 || typeAndCuisineString[1] == null || "".equals(typeAndCuisineString[1])) ?
                 storage.getCuisine("None"):
-                storage.getCuisine(typeAndCuisineString[0]);;
+                storage.getCuisine(typeAndCuisineString[1]);;
 
         //Get ingredient Strings
         for(int i = 0; i < mLinLayout.getChildCount(); i++) {

@@ -98,6 +98,7 @@ public class RecipeViewActivity extends AppCompatActivity implements NavigationB
 
     @Override
     public void onAddClick() {
+        storage.storedRecipe = null;
         Intent intent = new Intent(getApplicationContext(), RecipeEditActivity.class);
         startActivityForResult(intent, 0);
     }

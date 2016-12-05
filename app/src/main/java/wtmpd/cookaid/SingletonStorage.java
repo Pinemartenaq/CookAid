@@ -95,6 +95,14 @@ public class SingletonStorage extends SQLiteOpenHelper{
         return result;
     }
 
+    public void deleteType(RecipeType type){
+        types.remove(type);
+    }
+
+    public void deleteCuisine(RecipeCuisine cuisine){
+        cuisines.remove(cuisine);
+    }
+
     //Database functions
     /**
      * Adds the new recipe to the database, then returns the id of the recipe
@@ -139,7 +147,7 @@ public class SingletonStorage extends SQLiteOpenHelper{
         StringBuilder ingredientsString = new StringBuilder();
         for(SpecificIngredient si : updatedRecipe.getSpecificIngredients())
             ingredientsString.append(si.getIngredient()).append(", ").append(si.getMeasurement()).append(", ");
-        ingredientsString.delete(ingredientsString.lastIndexOf(", "), ingredientsString.lastIndexOf(", ") + 1);
+        //ingredientsString.delete(ingredientsString.lastIndexOf(", "), ingredientsString.lastIndexOf(", ") + 1); <-- Causing problems and not necessary?
 
         entry.put(COLUMN_HEADERS[1], updatedRecipe.getName());
         entry.put(COLUMN_HEADERS[2], updatedRecipe.getType().getName());

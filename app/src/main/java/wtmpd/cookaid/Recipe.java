@@ -47,7 +47,7 @@ public class Recipe {
     }
 
     //Getters
-    public String getID() { return Integer.toString(databaseID); }
+    public String getID() {return Integer.toString(databaseID);}
     public String getName() { return name; }
     public int getPrepTime(){ return prepTime; }
     public String getInstructions() { return cookingDirections; }
