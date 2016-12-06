@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -18,6 +17,7 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
 
     SingletonStorage storage;
 
+    EditText recipeNameText;
     EditText ingredients;
     Spinner type, cuisine;
     Button search;
@@ -27,6 +27,7 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_search);
 
+        recipeNameText = (EditText)findViewById(R.id.recipeNameText);
         ingredients = (EditText)findViewById(R.id.SearchBar);
         type = (Spinner)findViewById(R.id.typeList);
         cuisine = (Spinner)findViewById(R.id.cuisineList);
@@ -75,21 +76,31 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         String includeString = splitString.length > 0 ? splitString[0].trim() : new String();
         String excludeString = splitString.length > 1 ? splitString[1].trim() : new String();
 
-        String[] includeStringArray = includeString.split(",");
-        for(String s : includeStringArray)
-            include.add(storage.getIngredient(s.trim()));
+        String recipeNameString = recipeNameText.getText().toString().toLowerCase();
+        recipeNameString.trim();
+        System.out.println(recipeNameString);
 
-        String[] excludeStringArray = excludeString.split(",");
-        for(String s : excludeStringArray)
-            exclude.add(storage.getIngredient(s.trim()));
+        if(!includeString.equals("")) {
+            String[] includeStringArray = includeString.split(",");
+            for (String s : includeStringArray)
+                include.add(storage.getIngredient(s.trim()));
+        }
+        else{String[] includeStringArray = {};}
 
-        getListOfRecipes(storage.getType(type.getSelectedItem().toString()), storage.getCuisine(cuisine.getSelectedItem().toString()), include, exclude);
+        if(!excludeString.equals("")) {
+            String[] excludeStringArray = excludeString.split(",");
+            for (String s : excludeStringArray)
+                exclude.add(storage.getIngredient(s.trim()));
+        }
+        else{String[] excludeStringArray = {};}
+
+        getListOfRecipes(recipeNameString, storage.getType(type.getSelectedItem().toString()), storage.getCuisine(cuisine.getSelectedItem().toString()), include, exclude);
 
         Intent intent = new Intent(getApplicationContext(), ResultsActivity.class);
         startActivityForResult(intent, 0);
     }
 
-    private void getListOfRecipes(RecipeType type, RecipeCuisine cuisine, List<Ingredient> included, List<Ingredient> excluded) {
+    private void getListOfRecipes(String recipeNameString, RecipeType type, RecipeCuisine cuisine, final List<Ingredient> included, List<Ingredient> excluded) {
 
         SingletonStorage storage = SingletonStorage.getInstance(this);
 
@@ -97,13 +108,39 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
         storage.recipeNames = new LinkedList<String>();
         storage.recipeFitnesses = new LinkedList<String>();
 
+        System.out.println(included.size());
+
         for (Recipe recipe : storage.getRecipes()) {
-            //if (recipe.getFitness(excluded) == 0 && recipe.getCuisine().toString().compareTo(cuisine.toString()) == 0 && recipe.getType().toString().compareTo(type.toString()) == 0) {
-            storage.recipeNames.add(recipe.getName());
-            storage.recipeFitnesses.add(Integer.toString(recipe.getFitness(included)));
-            //}
+
+            if((!(recipe.getFitness(included) == 0) || included.size() == 0) && (recipe.getFitness(excluded) == 0)
+                    && (recipe.getName().toLowerCase().equals(recipeNameString) || recipeNameString.equals(""))){
+
+                if (cuisine.getName().toLowerCase().equals("any") && type.getName().toLowerCase().equals("any")){
+                    storage.recipeNames.add(recipe.getName());
+                    storage.recipeFitnesses.add(Integer.toString(recipe.getFitness(included)));
+                }
+                else if(cuisine.getName().toLowerCase().equals("any")){
+                    if(recipe.getType().getName().toLowerCase().equals(type.getName().toLowerCase())){
+                        storage.recipeNames.add(recipe.getName());
+                        storage.recipeFitnesses.add(Integer.toString(recipe.getFitness(included)));
+                    }
+                }
+                else if(type.getName().toLowerCase().equals("any")){
+                    if(recipe.getCuisine().getName().toLowerCase().equals(cuisine.getName().toLowerCase())){
+                        storage.recipeNames.add(recipe.getName());
+                        storage.recipeFitnesses.add(Integer.toString(recipe.getFitness(included)));
+                    }
+                }
+                else{
+                    if(recipe.getType().getName().toLowerCase().equals(type.getName().toLowerCase())
+                            && recipe.getCuisine().getName().toLowerCase().equals(cuisine.getName().toLowerCase()))
+                    {
+                        storage.recipeNames.add(recipe.getName());
+                        storage.recipeFitnesses.add(Integer.toString(recipe.getFitness(included)));
+                    }
+                }
+            }
         }
-        //System.out.println(storage.recipeNames);
     }
 
     private void updateTypesAndCuisines(){
@@ -119,9 +156,11 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
             if(allCuisines.contains(r.getCuisine())){checkCuisines[allCuisines.indexOf(r.getCuisine())] = true;}
         }
 
-        for(int i = 0; i <= allCuisines.size() - 1; i++){
-            if(checkCuisines[i] == false){storage.deleteCuisine(allCuisines.get(i));}
+        for(int i = 0; i <= allTypes.size() - 1; i++){
             if(checkTypes[i] == false){storage.deleteType(allTypes.get(i));}
+        }
+        for(int i = 0; i<= allCuisines.size() - 1; i++){
+            if(checkCuisines[i] == false){storage.deleteCuisine(allCuisines.get(i));}
         }
     }
 
@@ -162,28 +201,6 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
                 default:
                     break;
             }
-            /*
-            //======================================================================================
-            String s = ingredients.getText().toString();
-            String[] ingredientList = s.split(",");
-
-            List<String> trueIngredients = new LinkedList<String>();
-            List<String> falseIngredients = new LinkedList<String>();
-
-            for(int i = 0;i<ingredientList.length;i++) {
-                if(ingredientList[i].startsWith("NOT")){
-                        falseIngredients.add(ingredientList[i].substring(4));
-                } else if (ingredientList[i].startsWith(" NOT")) {
-                    falseIngredients.add(ingredientList[i].substring(5));
-                } else {
-                    trueIngredients.add(ingredientList[i]);
-                }
-            }
-            //======================================================================================
-            // At this point trueIngredients is a list<String> of ingredients that needs to be in
-            // the recipe and falseIngredients is a list<String> of ingredients that should not be
-            // in the recipe.
-            */
         }
 
     };

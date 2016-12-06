@@ -67,6 +67,7 @@ public class SingletonStorage extends SQLiteOpenHelper{
     public List<Recipe> getRecipes(){ return recipes; }
     public List<RecipeType> getTypes(){ return types; }
     public List<RecipeCuisine> getCuisines(){ return cuisines; }
+    public List<Ingredient> getIngredients(){return ingredients;}
 
     //Adders
     public void add(RecipeType newType){ types.add(newType); }
@@ -146,8 +147,7 @@ public class SingletonStorage extends SQLiteOpenHelper{
 
         StringBuilder ingredientsString = new StringBuilder();
         for(SpecificIngredient si : updatedRecipe.getSpecificIngredients())
-            ingredientsString.append(si.getIngredient()).append(", ").append(si.getMeasurement()).append(", ");
-        //ingredientsString.delete(ingredientsString.lastIndexOf(", "), ingredientsString.lastIndexOf(", ") + 1); <-- Causing problems and not necessary?
+            ingredientsString.append(si.getIngredient().getName()).append(", ").append(si.getMeasurement()).append(", ");
 
         entry.put(COLUMN_HEADERS[1], updatedRecipe.getName());
         entry.put(COLUMN_HEADERS[2], updatedRecipe.getType().getName());

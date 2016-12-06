@@ -78,6 +78,8 @@ public class RecipeViewActivity extends AppCompatActivity implements NavigationB
 
     public void onDeleteClick(){
 
+        storage.updateRecipe(storage.storedRecipe);
+
         storage.deleteRecipe(storage.storedRecipe);
         storage.storedRecipe = null;
 

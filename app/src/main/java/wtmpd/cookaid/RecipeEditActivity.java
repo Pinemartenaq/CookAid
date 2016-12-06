@@ -8,9 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -60,7 +57,7 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
             for(SpecificIngredient si : recipe.getSpecificIngredients()){
                 EditText et;
                 mLinLayout.addView(et = createNewTextView(mTextView.getText().toString()));
-                et.setText(si.getIngredient().getName() + si.getMeasurement());
+                et.setText(si.getIngredient().getName() + ", " + si.getMeasurement());
             }
         }
     }
@@ -70,7 +67,7 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
         List<SpecificIngredient> ingredients = new LinkedList<>();
 
         //Grab type and cuisine String
-        String[] typeAndCuisineString = ((EditText)findViewById(R.id.editTypeAndCuisine)).getText().toString().split(",");
+        String[] typeAndCuisineString = ((EditText)findViewById(R.id.editTypeAndCuisine)).getText().toString().split(", ");
 
         //Clean them
         for (String s : typeAndCuisineString)
@@ -78,27 +75,27 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
 
         //Convert to type if possible, else None
         RecipeType type = (typeAndCuisineString.length == 0 || typeAndCuisineString[0] == null || "".equals(typeAndCuisineString[0])) ?
-                storage.getType("None"):
+                storage.getType("Any"):
                 storage.getType(typeAndCuisineString[0]);
 
         //Convert to cuisine if possible, else None
         RecipeCuisine cuisine = (typeAndCuisineString.length < 2 || typeAndCuisineString[1] == null || "".equals(typeAndCuisineString[1])) ?
-                storage.getCuisine("None"):
-                storage.getCuisine(typeAndCuisineString[1]);;
+                storage.getCuisine("Any"):
+                storage.getCuisine(typeAndCuisineString[1]);
 
         //Get ingredient Strings
         for(int i = 0; i < mLinLayout.getChildCount(); i++) {
             if( mLinLayout.getChildAt( i ) instanceof EditText ) {
                 //Get ingredient String
-                String[] siStringArray = (((EditText)mLinLayout.getChildAt(i)).getText()).toString().split(",");
+                String[] siStringArray = (((EditText)mLinLayout.getChildAt(i)).getText()).toString().split(", ");
                 //If it isn't empty add it to ingredients
                 if(!(siStringArray.length == 0 || siStringArray[0] == null || "".equals(siStringArray[0])))
                     ingredients.add(new SpecificIngredient(storage.getIngredient(siStringArray[0]), siStringArray.length < 2 ? "As Desired": siStringArray[1]));
             }
         }
 
-        if(storage.storedRecipe == null)
-            storage.addRecipe(storage.storedRecipe =  new Recipe(
+        if(storage.storedRecipe == null){
+            storage.addRecipe(storage.storedRecipe = new Recipe(
                     ((EditText)findViewById(R.id.editName)).getText().toString(),
                     0,
                     cuisine,
@@ -106,8 +103,10 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
                     ingredients,
                     ((EditText)findViewById(R.id.editInstruction)).getText().toString()
             ));
+        }
         else {
             String id = storage.storedRecipe.getID();
+            Recipe temp = storage.storedRecipe;
             storage.storedRecipe =  new Recipe(
                     ((EditText)findViewById(R.id.editName)).getText().toString(),
                     0,
@@ -118,6 +117,7 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
             );
             storage.storedRecipe.setID(Integer.parseInt(id));
             storage.updateRecipe(storage.storedRecipe);
+            storage.storedRecipe = storage.getRecipes().get(storage.getRecipes().indexOf(temp));
         }
 
         Intent intent = new Intent(getApplicationContext(), RecipeViewActivity.class);
@@ -129,16 +129,14 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
 
             @Override
             public void onClick(View v) {
-                //mLayout.addView(createNewTextView(mTextView.getText().toString()));
                 mLinLayout.addView(createNewTextView(mTextView.getText().toString()));
             }
         };
     }
 
     private EditText createNewTextView(String text) {
-        //final ActionBar.LayoutParams lparams = new ActionBar.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT*);
         final EditText textView = new EditText(this);
-        textView.setHint("add additional Ingredient");
+        textView.setHint("Ingredient Name, Quantitiy");
         textView.setLayoutParams(mEditText.getLayoutParams());
         textView.setBackgroundColor(-1);
         return textView;

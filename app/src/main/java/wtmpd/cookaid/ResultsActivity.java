@@ -26,8 +26,6 @@ public class ResultsActivity extends AppCompatActivity implements NavigationBar.
 
         names = storage.recipeNames.toArray(names);
         fitnesses = storage.recipeFitnesses.toArray(fitnesses);
-
-        //storage.deleteRecipe(storage.getRecipes().get(0));
         
         String[] backupname = {};
         String[] backupfit = {};
@@ -39,6 +37,7 @@ public class ResultsActivity extends AppCompatActivity implements NavigationBar.
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id){
                 final String item = (String)parent.getItemAtPosition(position);
                 storage.storedRecipe = storage.getRecipes().get(position);
+
                 Intent intent = new Intent(getApplicationContext(), RecipeViewActivity.class);
                 startActivityForResult(intent, 0);
             }

@@ -32,17 +32,9 @@ public class Recipe {
 
         this.name = name;
         this.prepTime = prepTime;
-
         this.cuisine = cuisine;
-        //cuisine.addRecipe(this);
-
         this.type = type;
-        //type.addRecipe(this);
-
         this.ingredients = ingredients;
-        //for(SpecificIngredient si : ingredients)
-            //si.getIngredient().addRecipe(this);
-
         this.cookingDirections = cookingDirections;
     }
 
@@ -57,11 +49,15 @@ public class Recipe {
 
     public List<Ingredient> getIngredients() {
         List ingredientList = new LinkedList<Ingredient>();
+
         for (SpecificIngredient si : ingredients)
             if(!ingredientList.contains(si.getIngredient()))
+            {
                 ingredientList.add(si.getIngredient());
+            }
         return ingredientList;
     }
+
     public RecipeItemFragment getFragment(List<Ingredient> ingredientList){
         RecipeItemFragment fragment = new RecipeItemFragment();
         fragment.addRecipe(this);
@@ -97,8 +93,13 @@ public class Recipe {
      */
     public int getFitness(List<Ingredient> desiredIngredients) {
         int fitness = 0;
-        for (Ingredient i : desiredIngredients)
-            fitness += ingredients.contains(i) ? 1 : 0;
+        for (Ingredient i : desiredIngredients){
+            for (Ingredient inRecipe : this.getIngredients()){
+                if(i.getName().toLowerCase().equals(inRecipe.getName().toLowerCase())){
+                    fitness++;
+                }
+            }
+        }
         return fitness;
     }
 }
