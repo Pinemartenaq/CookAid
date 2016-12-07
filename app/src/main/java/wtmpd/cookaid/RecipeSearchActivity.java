@@ -117,18 +117,18 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
 
                 if (cuisine.getName().toLowerCase().equals("any") && type.getName().toLowerCase().equals("any")){
                     storage.recipeNames.add(recipe.getName());
-                    storage.recipeFitnesses.add("Fitness: " + Integer.toString(recipe.getFitness(included)));
+                    storage.recipeFitnesses.add(Integer.toString(recipe.getFitness(included)));
                 }
                 else if(cuisine.getName().toLowerCase().equals("any")){
                     if(recipe.getType().getName().toLowerCase().equals(type.getName().toLowerCase())){
                         storage.recipeNames.add(recipe.getName());
-                        storage.recipeFitnesses.add("Fitness: " + Integer.toString(recipe.getFitness(included)));
+                        storage.recipeFitnesses.add(Integer.toString(recipe.getFitness(included)));
                     }
                 }
                 else if(type.getName().toLowerCase().equals("any")){
                     if(recipe.getCuisine().getName().toLowerCase().equals(cuisine.getName().toLowerCase())){
                         storage.recipeNames.add(recipe.getName());
-                        storage.recipeFitnesses.add("Fitness: " + Integer.toString(recipe.getFitness(included)));
+                        storage.recipeFitnesses.add(Integer.toString(recipe.getFitness(included)));
                     }
                 }
                 else{
@@ -136,7 +136,7 @@ public class RecipeSearchActivity extends AppCompatActivity implements Navigatio
                             && recipe.getCuisine().getName().toLowerCase().equals(cuisine.getName().toLowerCase()))
                     {
                         storage.recipeNames.add(recipe.getName());
-                        storage.recipeFitnesses.add("Fitness: " + Integer.toString(recipe.getFitness(included)));
+                        storage.recipeFitnesses.add(Integer.toString(recipe.getFitness(included)));
                     }
                 }
             }

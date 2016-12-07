@@ -104,10 +104,12 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
                     ((EditText)findViewById(R.id.editInstruction)).getText().toString()
             ));
 
+            Intent intent = new Intent(getApplicationContext(), RecipeViewActivity.class);
+            startActivityForResult(intent, 0);
         }
         else {
-            String id = storage.storedRecipe.getID();
             storage.deleteRecipe(storage.storedRecipe);
+
             storage.storedRecipe =  new Recipe(
                     ((EditText)findViewById(R.id.editName)).getText().toString(),
                     0,
@@ -116,12 +118,12 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
                     ingredients,
                     ((EditText)findViewById(R.id.editInstruction)).getText().toString()
             );
-            storage.storedRecipe.setID(Integer.parseInt(id));
-            storage.updateRecipe(storage.storedRecipe);
-        }
 
-        Intent intent = new Intent(getApplicationContext(), RecipeViewActivity.class);
-        startActivityForResult(intent, 0);
+            storage.addRecipe(storage.storedRecipe);
+
+            Intent intent = new Intent(getApplicationContext(), RecipeViewActivity.class);
+            startActivityForResult(intent, 0);
+        }
     }
 
     private View.OnClickListener onClickAddIngredient() {
