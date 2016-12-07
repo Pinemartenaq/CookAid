@@ -103,10 +103,11 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
                     ingredients,
                     ((EditText)findViewById(R.id.editInstruction)).getText().toString()
             ));
+
         }
         else {
             String id = storage.storedRecipe.getID();
-            Recipe temp = storage.storedRecipe;
+            storage.deleteRecipe(storage.storedRecipe);
             storage.storedRecipe =  new Recipe(
                     ((EditText)findViewById(R.id.editName)).getText().toString(),
                     0,
@@ -117,7 +118,6 @@ public class RecipeEditActivity extends AppCompatActivity implements NavigationB
             );
             storage.storedRecipe.setID(Integer.parseInt(id));
             storage.updateRecipe(storage.storedRecipe);
-            storage.storedRecipe = storage.getRecipes().get(storage.getRecipes().indexOf(temp));
         }
 
         Intent intent = new Intent(getApplicationContext(), RecipeViewActivity.class);
